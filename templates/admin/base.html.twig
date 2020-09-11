@@ -11,9 +11,9 @@
         <h5 class="my-0 mr-md-auto font-weight-normal">Awesome Videos</h5>
         <a class="nav-link active" href="{{path('main_page')}}"> Go to public site</a>      
         <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2 text-dark">Logged as John Smith</a>
+            <a class="p-2 text-dark">Logged as {{app.user.name|capitalize }} {{ app.user.lastname|capitalize}}</a>
         </nav>
-        <a class="btn btn-outline-primary" href="#">Logout</a>
+        <a class="btn btn-outline-primary" href="{{path('logout')}}">Logout</a>
     </div>
 
         <div class="row">

@@ -136,9 +136,17 @@ class __TwigTemplate_2a7655b0de48b0367e2b52e8a281bd55d428448ac3582b05bb25c16bd00
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("main_page");
         echo "\"> Go to public site</a>      
         <nav class=\"my-2 my-md-0 mr-md-3\">
-            <a class=\"p-2 text-dark\">Logged as John Smith</a>
+            <a class=\"p-2 text-dark\">Logged as ";
+        // line 14
+        echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14), "name", [], "any", false, false, false, 14)), "html", null, true);
+        echo " ";
+        echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14), "lastname", [], "any", false, false, false, 14)), "html", null, true);
+        echo "</a>
         </nav>
-        <a class=\"btn btn-outline-primary\" href=\"#\">Logout</a>
+        <a class=\"btn btn-outline-primary\" href=\"";
+        // line 16
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
+        echo "\">Logout</a>
     </div>
 
         <div class=\"row\">
@@ -292,7 +300,7 @@ class __TwigTemplate_2a7655b0de48b0367e2b52e8a281bd55d428448ac3582b05bb25c16bd00
 
     public function getDebugInfo()
     {
-        return array (  267 => 68,  257 => 67,  239 => 66,  221 => 62,  209 => 63,  207 => 62,  202 => 60,  187 => 48,  178 => 42,  169 => 36,  160 => 30,  151 => 24,  136 => 12,  132 => 10,  122 => 9,  104 => 7,  85 => 5,  64 => 3,  41 => 1,);
+        return array (  275 => 68,  265 => 67,  247 => 66,  229 => 62,  217 => 63,  215 => 62,  210 => 60,  195 => 48,  186 => 42,  177 => 36,  168 => 30,  159 => 24,  148 => 16,  141 => 14,  136 => 12,  132 => 10,  122 => 9,  104 => 7,  85 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext()
@@ -310,9 +318,9 @@ class __TwigTemplate_2a7655b0de48b0367e2b52e8a281bd55d428448ac3582b05bb25c16bd00
         <h5 class=\"my-0 mr-md-auto font-weight-normal\">Awesome Videos</h5>
         <a class=\"nav-link active\" href=\"{{path('main_page')}}\"> Go to public site</a>      
         <nav class=\"my-2 my-md-0 mr-md-3\">
-            <a class=\"p-2 text-dark\">Logged as John Smith</a>
+            <a class=\"p-2 text-dark\">Logged as {{app.user.name|capitalize }} {{ app.user.lastname|capitalize}}</a>
         </nav>
-        <a class=\"btn btn-outline-primary\" href=\"#\">Logout</a>
+        <a class=\"btn btn-outline-primary\" href=\"{{path('logout')}}\">Logout</a>
     </div>
 
         <div class=\"row\">

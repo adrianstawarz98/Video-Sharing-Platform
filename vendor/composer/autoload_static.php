@@ -139,11 +139,13 @@ class ComposerStaticInit3601fcf0bf31be243758bed13c347b75
             'Doctrine\\DBAL\\' => 14,
             'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
+            'Doctrine\\Common\\DataFixtures\\' => 29,
             'Doctrine\\Common\\Collections\\' => 28,
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
             'Doctrine\\Bundle\\MigrationsBundle\\' => 33,
+            'Doctrine\\Bundle\\FixturesBundle\\' => 31,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
         ),
         'A' => 
@@ -520,6 +522,10 @@ class ComposerStaticInit3601fcf0bf31be243758bed13c347b75
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
         ),
+        'Doctrine\\Common\\DataFixtures\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures',
+        ),
         'Doctrine\\Common\\Collections\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections',
@@ -543,6 +549,10 @@ class ComposerStaticInit3601fcf0bf31be243758bed13c347b75
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-migrations-bundle',
         ),
+        'Doctrine\\Bundle\\FixturesBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle',
+        ),
         'Doctrine\\Bundle\\DoctrineBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
@@ -558,6 +568,11 @@ class ComposerStaticInit3601fcf0bf31be243758bed13c347b75
     );
 
     public static $classMap = array (
+        'App\\Controller\\AdminController' => __DIR__ . '/../..' . '/src/Controller/AdminController.php',
+        'App\\Controller\\FrontController' => __DIR__ . '/../..' . '/src/Controller/FrontController.php',
+        'App\\Entity\\User' => __DIR__ . '/../..' . '/src/Entity/User.php',
+        'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
+        'App\\Repository\\UserRepository' => __DIR__ . '/../..' . '/src/Repository/UserRepository.php',
         'Collator' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/Collator.php',
         'Doctrine\\Bundle\\DoctrineBundle\\Command\\CreateDatabaseDoctrineCommand' => __DIR__ . '/..' . '/doctrine/doctrine-bundle/Command/CreateDatabaseDoctrineCommand.php',
         'Doctrine\\Bundle\\DoctrineBundle\\Command\\DoctrineCommand' => __DIR__ . '/..' . '/doctrine/doctrine-bundle/Command/DoctrineCommand.php',
@@ -608,6 +623,22 @@ class ComposerStaticInit3601fcf0bf31be243758bed13c347b75
         'Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository' => __DIR__ . '/..' . '/doctrine/doctrine-bundle/Repository/ServiceEntityRepository.php',
         'Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepositoryInterface' => __DIR__ . '/..' . '/doctrine/doctrine-bundle/Repository/ServiceEntityRepositoryInterface.php',
         'Doctrine\\Bundle\\DoctrineBundle\\Twig\\DoctrineExtension' => __DIR__ . '/..' . '/doctrine/doctrine-bundle/Twig/DoctrineExtension.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Command\\LoadDataFixturesDoctrineCommand' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Command/LoadDataFixturesDoctrineCommand.php',
+        'Doctrine\\Bundle\\FixturesBundle\\DependencyInjection\\CompilerPass\\FixturesCompilerPass' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/DependencyInjection/CompilerPass/FixturesCompilerPass.php',
+        'Doctrine\\Bundle\\FixturesBundle\\DependencyInjection\\DoctrineFixturesExtension' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/DependencyInjection/DoctrineFixturesExtension.php',
+        'Doctrine\\Bundle\\FixturesBundle\\DoctrineFixturesBundle' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/DoctrineFixturesBundle.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Fixture' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Fixture.php',
+        'Doctrine\\Bundle\\FixturesBundle\\FixtureGroupInterface' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/FixtureGroupInterface.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Loader\\SymfonyFixturesLoader' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Loader/SymfonyFixturesLoader.php',
+        'Doctrine\\Bundle\\FixturesBundle\\ORMFixtureInterface' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/ORMFixtureInterface.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Tests\\Command\\LoadDataFixturesDoctrineCommandTest' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Tests/Command/LoadDataFixturesDoctrineCommandTest.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Tests\\Fixtures\\FooBundle\\DataFixtures\\DependentOnRequiredConstructorArgsFixtures' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Tests/Fixtures/FooBundle/DataFixtures/DependentOnRequiredConstructorArgsFixtures.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Tests\\Fixtures\\FooBundle\\DataFixtures\\OtherFixtures' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Tests/Fixtures/FooBundle/DataFixtures/OtherFixtures.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Tests\\Fixtures\\FooBundle\\DataFixtures\\RequiredConstructorArgsFixtures' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Tests/Fixtures/FooBundle/DataFixtures/RequiredConstructorArgsFixtures.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Tests\\Fixtures\\FooBundle\\DataFixtures\\WithDependenciesFixtures' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Tests/Fixtures/FooBundle/DataFixtures/WithDependenciesFixtures.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Tests\\Fixtures\\FooBundle\\FooBundle' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Tests/Fixtures/FooBundle/FooBundle.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Tests\\IntegrationTest' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Tests/IntegrationTest.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Tests\\IntegrationTestKernel' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Tests/IntegrationTestKernel.php',
         'Doctrine\\Bundle\\MigrationsBundle\\DependencyInjection\\CompilerPass\\ConfigureDependencyFactoryPass' => __DIR__ . '/..' . '/doctrine/doctrine-migrations-bundle/DependencyInjection/CompilerPass/ConfigureDependencyFactoryPass.php',
         'Doctrine\\Bundle\\MigrationsBundle\\DependencyInjection\\Configuration' => __DIR__ . '/..' . '/doctrine/doctrine-migrations-bundle/DependencyInjection/Configuration.php',
         'Doctrine\\Bundle\\MigrationsBundle\\DependencyInjection\\DoctrineMigrationsExtension' => __DIR__ . '/..' . '/doctrine/doctrine-migrations-bundle/DependencyInjection/DoctrineMigrationsExtension.php',
@@ -677,6 +708,27 @@ class ComposerStaticInit3601fcf0bf31be243758bed13c347b75
         'Doctrine\\Common\\Collections\\Selectable' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php',
         'Doctrine\\Common\\CommonException' => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common/CommonException.php',
         'Doctrine\\Common\\Comparable' => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common/Comparable.php',
+        'Doctrine\\Common\\DataFixtures\\AbstractFixture' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/AbstractFixture.php',
+        'Doctrine\\Common\\DataFixtures\\DependentFixtureInterface' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/DependentFixtureInterface.php',
+        'Doctrine\\Common\\DataFixtures\\Event\\Listener\\MongoDBReferenceListener' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Event/Listener/MongoDBReferenceListener.php',
+        'Doctrine\\Common\\DataFixtures\\Event\\Listener\\ORMReferenceListener' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Event/Listener/ORMReferenceListener.php',
+        'Doctrine\\Common\\DataFixtures\\Exception\\CircularReferenceException' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Exception/CircularReferenceException.php',
+        'Doctrine\\Common\\DataFixtures\\Executor\\AbstractExecutor' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Executor/AbstractExecutor.php',
+        'Doctrine\\Common\\DataFixtures\\Executor\\MongoDBExecutor' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Executor/MongoDBExecutor.php',
+        'Doctrine\\Common\\DataFixtures\\Executor\\ORMExecutor' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Executor/ORMExecutor.php',
+        'Doctrine\\Common\\DataFixtures\\Executor\\PHPCRExecutor' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Executor/PHPCRExecutor.php',
+        'Doctrine\\Common\\DataFixtures\\FixtureInterface' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/FixtureInterface.php',
+        'Doctrine\\Common\\DataFixtures\\Loader' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Loader.php',
+        'Doctrine\\Common\\DataFixtures\\OrderedFixtureInterface' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/OrderedFixtureInterface.php',
+        'Doctrine\\Common\\DataFixtures\\ProxyReferenceRepository' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/ProxyReferenceRepository.php',
+        'Doctrine\\Common\\DataFixtures\\Purger\\MongoDBPurger' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Purger/MongoDBPurger.php',
+        'Doctrine\\Common\\DataFixtures\\Purger\\ORMPurger' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Purger/ORMPurger.php',
+        'Doctrine\\Common\\DataFixtures\\Purger\\PHPCRPurger' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Purger/PHPCRPurger.php',
+        'Doctrine\\Common\\DataFixtures\\Purger\\PurgerInterface' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Purger/PurgerInterface.php',
+        'Doctrine\\Common\\DataFixtures\\ReferenceRepository' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/ReferenceRepository.php',
+        'Doctrine\\Common\\DataFixtures\\SharedFixtureInterface' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/SharedFixtureInterface.php',
+        'Doctrine\\Common\\DataFixtures\\Sorter\\TopologicalSorter' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Sorter/TopologicalSorter.php',
+        'Doctrine\\Common\\DataFixtures\\Sorter\\Vertex' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Sorter/Vertex.php',
         'Doctrine\\Common\\EventArgs' => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common/EventArgs.php',
         'Doctrine\\Common\\EventManager' => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common/EventManager.php',
         'Doctrine\\Common\\EventSubscriber' => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common/EventSubscriber.php',

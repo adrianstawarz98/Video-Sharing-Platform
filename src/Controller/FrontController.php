@@ -71,4 +71,3 @@ class FrontController extends AbstractController
         return $this->render('front/payment.html.twig');
     }
 }
-

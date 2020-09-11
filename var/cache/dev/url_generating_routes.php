@@ -27,6 +27,7 @@ return [
     'search_results' => [[], ['_controller' => 'App\\Controller\\FrontController::searchResults'], [], [['text', '/search-results']], [], []],
     'pricing' => [[], ['_controller' => 'App\\Controller\\FrontController::pricing'], [], [['text', '/pricing']], [], []],
     'register' => [[], ['_controller' => 'App\\Controller\\FrontController::register'], [], [['text', '/register']], [], []],
-    'login' => [[], ['_controller' => 'App\\Controller\\FrontController::login'], [], [['text', '/login']], [], []],
     'payment' => [[], ['_controller' => 'App\\Controller\\FrontController::payment'], [], [['text', '/payment']], [], []],
+    'login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
+    'logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
 ];
