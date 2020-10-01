@@ -86,9 +86,9 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./assets/js/jquery.js":
+/***/ "./public/assets/js/jquery.js":
 /*!*****************************!*\
-  !*** ./assets/js/jquery.js ***!
+  !*** ./public/assets/js/jquery.js ***!
   \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -99,12 +99,12 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
 
 /***/ 1:
 /*!***********************************!*\
-  !*** multi ./assets/js/jquery.js ***!
+  !*** multi ./public/assets/js/jquery.js ***!
   \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./assets/js/jquery.js */"./assets/js/jquery.js");
+module.exports = __webpack_require__(/*! ./public/assets/js/jquery.js */"./public/assets/js/jquery.js");
 
 
 /***/ })

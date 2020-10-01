@@ -93,6 +93,8 @@ return [[
 '%5B%5BC%5DApp%5CController%5CFrontController%23login%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CFrontController%23payment%5D%5B1%5D' => 17,
 '%5B%5BC%5DApp%5CController%5CFrontController%23payment%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CFrontController%23mainCategories%5D%5B1%5D' => 1,
+'%5B%5BC%5DApp%5CController%5CFrontController%23mainCategories%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CSecurityController%5D%5B1%5D' => 1,
 '%5B%5BC%5DApp%5CController%5CSecurityController%5D%5B1%5D' => 2,
 '%5BApp%5CController%5CSecurityController%23login%5D%5B1%5D' => 16,
@@ -688,7 +690,7 @@ return [[
 
 0 => 'N;',
 1 => [],
-2 => 1599846593,
+2 => 1601203149,
 3 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
@@ -871,7 +873,7 @@ return [[
         [
             'Symfony\\Component\\Routing\\Annotation\\Route' => [
                 'path' => [
-                    '/video-list',
+                    '/video-list/{category}/{id}',
                 ],
                 'name' => [
                     'video_list',

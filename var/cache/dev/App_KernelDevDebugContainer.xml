@@ -113,7 +113,7 @@
     <parameter key="kernel.trusted_hosts" type="collection"/>
     <parameter key="kernel.default_locale">en</parameter>
     <parameter key="kernel.error_controller">error_controller</parameter>
-    <parameter key="debug.file_link_format">null</parameter>
+    <parameter key="debug.file_link_format">phpstorm://open?file=%f&amp;line=%l</parameter>
     <parameter key="session.metadata.storage_key">_sf2_meta</parameter>
     <parameter key="session.storage.options" type="collection">
       <parameter key="cache_limiter" type="string">0</parameter>
@@ -369,6 +369,9 @@
     <service id="App\DataFixtures\VideoFixtures" class="App\DataFixtures\VideoFixtures" autowire="true" autoconfigure="true">
       <tag name="doctrine.fixture.orm"/>
     </service>
+    <service id="App\Form\CategoryType" class="App\Form\CategoryType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -386,6 +389,21 @@
       <argument type="service" id="router.default"/>
       <argument type="service" id="security.csrf.token_manager"/>
       <argument type="service" id="security.user_password_encoder.generic"/>
+    </service>
+    <service id="App\Twig\AppExtension" class="App\Twig\AppExtension" autowire="true" autoconfigure="true">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="App\Utils\CategoryTreeAdminList" class="App\Utils\CategoryTreeAdminList" autowire="true" autoconfigure="true">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="router.default"/>
+    </service>
+    <service id="App\Utils\CategoryTreeAdminOptionList" class="App\Utils\CategoryTreeAdminOptionList" autowire="true" autoconfigure="true">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="router.default"/>
+    </service>
+    <service id="App\Utils\CategoryTreeFrontPage" class="App\Utils\CategoryTreeFrontPage" autowire="true" autoconfigure="true">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="router.default"/>
     </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory" public="false"/>
     <service id="response_listener" class="Symfony\Component\HttpKernel\EventListener\ResponseListener" public="false">
@@ -838,9 +856,11 @@
       <argument type="service" id="form.registry"/>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
+        <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\CategoryType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -1184,7 +1204,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.AYkowom"/>
+      <argument type="service" id=".service_locator.vnGQ8fJ"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -2294,7 +2314,7 @@
       <argument>null</argument>
     </service>
     <service id="debug.file_link_formatter" class="Symfony\Component\HttpKernel\Debug\FileLinkFormatter" public="false">
-      <argument>null</argument>
+      <argument>phpstorm://open?file=%%f&amp;line=%%l</argument>
       <argument type="service" id="request_stack" on-invalid="ignore"/>
       <argument>E:\Video-Sharing-Platform</argument>
       <argument type="service" id="debug.file_link_formatter.url_format"/>
@@ -3155,11 +3175,11 @@
       <tag name="container.preload" class="Twig\TemplateWrapper"/>
       <argument type="service" id="twig.loader.native_filesystem"/>
       <argument type="collection">
+        <argument key="debug">true</argument>
+        <argument key="strict_variables">true</argument>
         <argument key="autoescape">name</argument>
         <argument key="cache">E:\Video-Sharing-Platform\var\cache\dev/twig</argument>
         <argument key="charset">UTF-8</argument>
-        <argument key="debug">true</argument>
-        <argument key="strict_variables">true</argument>
       </argument>
       <call method="addExtension">
         <argument type="service" id="twig.extension.security_csrf"/>
@@ -3208,6 +3228,9 @@
       </call>
       <call method="addExtension">
         <argument type="service" id="twig.extension.dump"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="App\Twig\AppExtension"/>
       </call>
       <call method="addExtension">
         <argument type="service" id="doctrine.twig.doctrine_extension"/>
@@ -5255,12 +5278,16 @@
     <service id=".abstract.instanceof.App\DataFixtures\UserFixtures" class="App\DataFixtures\UserFixtures" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\VideoFixtures" class="App\DataFixtures\VideoFixtures" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataFixtures\VideoFixtures" class="App\DataFixtures\VideoFixtures" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CategoryType" class="App\Form\CategoryType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CategoryType" class="App\Form\CategoryType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CategoryRepository" class="App\Repository\CategoryRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\VideoRepository" class="App\Repository\VideoRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\VideoRepository" class="App\Repository\VideoRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Twig\Extension\ExtensionInterface.0.App\Twig\AppExtension" class="App\Twig\AppExtension" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Twig\AppExtension" class="App\Twig\AppExtension" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.WaGDpDt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5514,15 +5541,44 @@
         <argument key="loader" type="service" id=".errored..service_locator.C9JCBPC.Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
+    <service id=".service_locator.xaYlDwo" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="adminList" type="service" id="App\Utils\CategoryTreeAdminList"/>
+      </argument>
+    </service>
+    <service id=".service_locator.wNIwF8O" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="category" type="service" id=".errored..service_locator.wNIwF8O.App\Entity\Category"/>
+      </argument>
+    </service>
+    <service id=".service_locator.0XdlIh3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="categories" type="service" id="App\Utils\CategoryTreeAdminOptionList"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ijavLg8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="categories" type="service" id="App\Utils\CategoryTreeFrontPage"/>
+      </argument>
+    </service>
     <service id=".service_locator.xA8Fw_." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.MuerpNP" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.sKbT1_x" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\AdminController::categories" type="service" id=".service_locator.xaYlDwo"/>
+        <argument key="App\Controller\AdminController::deleteCategory" type="service" id=".service_locator.wNIwF8O"/>
+        <argument key="App\Controller\AdminController::editCategory" type="service" id=".service_locator.wNIwF8O"/>
+        <argument key="App\Controller\AdminController::getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
+        <argument key="App\Controller\FrontController::videoList" type="service" id=".service_locator.ijavLg8"/>
         <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.xA8Fw_."/>
         <argument key="App\Kernel::loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
@@ -5530,6 +5586,11 @@
         <argument key="kernel::loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel::registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel::terminate" type="service" id=".service_locator.beq5mCo"/>
+        <argument key="App\Controller\AdminController:categories" type="service" id=".service_locator.xaYlDwo"/>
+        <argument key="App\Controller\AdminController:deleteCategory" type="service" id=".service_locator.wNIwF8O"/>
+        <argument key="App\Controller\AdminController:editCategory" type="service" id=".service_locator.wNIwF8O"/>
+        <argument key="App\Controller\AdminController:getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
+        <argument key="App\Controller\FrontController:videoList" type="service" id=".service_locator.ijavLg8"/>
         <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.xA8Fw_."/>
         <argument key="kernel:loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel:registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
@@ -5595,9 +5656,10 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.AYkowom" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.vnGQ8fJ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\CategoryType" type="service" id="App\Form\CategoryType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ColorType" type="service" id="form.type.color"/>
@@ -6003,12 +6065,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.MuerpNP"/>
+      <argument type="service" id=".service_locator.sKbT1_x"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.MuerpNP"/>
+      <argument type="service" id=".service_locator.sKbT1_x"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6020,6 +6082,7 @@
     </service>
     <service id=".errored..service_locator.beq5mCo.Symfony\Component\HttpFoundation\Response" class="Symfony\Component\HttpFoundation\Response"/>
     <service id=".errored..service_locator.C9JCBPC.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
+    <service id=".errored..service_locator.wNIwF8O.App\Entity\Category" class="App\Entity\Category"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
       <argument type="service" id=".service_locator.y52Hdkq"/>
@@ -6418,7 +6481,7 @@
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.MuerpNP"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.sKbT1_x"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

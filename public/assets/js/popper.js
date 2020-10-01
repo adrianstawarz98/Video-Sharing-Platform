@@ -86,9 +86,9 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./assets/js/popper.js":
+/***/ "./public/assets/js/popper.js":
 /*!*****************************!*\
-  !*** ./assets/js/popper.js ***!
+  !*** ./public/assets/js/popper.js ***!
   \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -99,12 +99,12 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
 
 /***/ 2:
 /*!***********************************!*\
-  !*** multi ./assets/js/popper.js ***!
+  !*** multi ./public/assets/js/popper.js ***!
   \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./assets/js/popper.js */"./assets/js/popper.js");
+module.exports = __webpack_require__(/*! ./public/assets/js/popper.js */"./public/assets/js/popper.js");
 
 
 /***/ })

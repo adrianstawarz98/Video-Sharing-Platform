@@ -14,13 +14,11 @@ return [
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/admin' => [[['_route' => 'admin_main_page', '_controller' => 'App\\Controller\\AdminController::index'], null, null, null, true, false, null]],
-        '/admin/categories' => [[['_route' => 'categories', '_controller' => 'App\\Controller\\AdminController::categories'], null, null, null, false, false, null]],
-        '/admin/edit-category' => [[['_route' => 'edit_category', '_controller' => 'App\\Controller\\AdminController::editCategory'], null, null, null, false, false, null]],
+        '/admin/categories' => [[['_route' => 'categories', '_controller' => 'App\\Controller\\AdminController::categories'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/admin/videos' => [[['_route' => 'videos', '_controller' => 'App\\Controller\\AdminController::videos'], null, null, null, false, false, null]],
         '/admin/upload-video' => [[['_route' => 'upload_video', '_controller' => 'App\\Controller\\AdminController::uploadVideo'], null, null, null, false, false, null]],
         '/admin/users' => [[['_route' => 'users', '_controller' => 'App\\Controller\\AdminController::users'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'main_page', '_controller' => 'App\\Controller\\FrontController::index'], null, null, null, false, false, null]],
-        '/video-list' => [[['_route' => 'video_list', '_controller' => 'App\\Controller\\FrontController::videoList'], null, null, null, false, false, null]],
         '/video-details' => [[['_route' => 'video_details', '_controller' => 'App\\Controller\\FrontController::videoDetails'], null, null, null, false, false, null]],
         '/search-results' => [[['_route' => 'search_results', '_controller' => 'App\\Controller\\FrontController::searchResults'], null, ['POST' => 0], null, false, false, null]],
         '/pricing' => [[['_route' => 'pricing', '_controller' => 'App\\Controller\\FrontController::pricing'], null, null, null, false, false, null]],
@@ -46,6 +44,11 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
+                .'|/admin/(?'
+                    .'|edit\\-category/([^/]++)(*:202)'
+                    .'|delete\\-category/([^/]++)(*:235)'
+                .')'
+                .'|/video\\-list/([^/]++)/([^/]++)(*:274)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -55,8 +58,11 @@ return [
         116 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
-        159 => [
-            [['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null],
+        159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
+        202 => [[['_route' => 'edit_category', '_controller' => 'App\\Controller\\AdminController::editCategory'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        235 => [[['_route' => 'delete_category', '_controller' => 'App\\Controller\\AdminController::deleteCategory'], ['id'], null, null, false, true, null]],
+        274 => [
+            [['_route' => 'video_list', '_controller' => 'App\\Controller\\FrontController::videoList'], ['category', 'id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

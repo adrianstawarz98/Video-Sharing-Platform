@@ -24,7 +24,7 @@ class Category
     private $id;
 
     /**
-     * @Assert\NotBlank(message="this field is required")
+     * @Assert\NotBlank(message="Field name is required")
      * @ORM\Column(type="string", length=45, unique=true)
      */
     private $name;

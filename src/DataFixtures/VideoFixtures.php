@@ -12,7 +12,10 @@ class VideoFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         foreach ($this->videoData() as [$title, $path, $category_id]) {
-            $duration = random_int(0, 200);
+            try {
+                $duration = random_int(0, 200);
+            } catch (\Exception $e) {
+            }
             $video = new Video;
             $video->setDuration($duration);
             $video->setCategory($manager->getRepository(Category::class)->find($category_id));
