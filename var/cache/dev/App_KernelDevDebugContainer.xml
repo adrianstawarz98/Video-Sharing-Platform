@@ -14,12 +14,13 @@
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="DoctrineMigrationsBundle">Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle</parameter>
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
-      <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="MonologBundle">Symfony\Bundle\MonologBundle\MonologBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="MakerBundle">Symfony\Bundle\MakerBundle\MakerBundle</parameter>
       <parameter key="DoctrineFixturesBundle">Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle</parameter>
       <parameter key="WebpackEncoreBundle">Symfony\WebpackEncoreBundle\WebpackEncoreBundle</parameter>
+      <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
+      <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -50,10 +51,6 @@
         <parameter key="path">E:\Video-Sharing-Platform\vendor\symfony\security-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\SecurityBundle</parameter>
       </parameter>
-      <parameter key="WebProfilerBundle" type="collection">
-        <parameter key="path">E:\Video-Sharing-Platform\vendor\symfony\web-profiler-bundle</parameter>
-        <parameter key="namespace">Symfony\Bundle\WebProfilerBundle</parameter>
-      </parameter>
       <parameter key="MonologBundle" type="collection">
         <parameter key="path">E:\Video-Sharing-Platform\vendor\symfony\monolog-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\MonologBundle</parameter>
@@ -73,6 +70,14 @@
       <parameter key="WebpackEncoreBundle" type="collection">
         <parameter key="path">E:\Video-Sharing-Platform\vendor\symfony\webpack-encore-bundle\src</parameter>
         <parameter key="namespace">Symfony\WebpackEncoreBundle</parameter>
+      </parameter>
+      <parameter key="KnpPaginatorBundle" type="collection">
+        <parameter key="path">E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle</parameter>
+        <parameter key="namespace">Knp\Bundle\PaginatorBundle</parameter>
+      </parameter>
+      <parameter key="WebProfilerBundle" type="collection">
+        <parameter key="path">E:\Video-Sharing-Platform\vendor\symfony\web-profiler-bundle</parameter>
+        <parameter key="namespace">Symfony\Bundle\WebProfilerBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -228,8 +233,6 @@
       <parameter>dev</parameter>
       <parameter>main</parameter>
     </parameter>
-    <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
-    <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
     <parameter key="monolog.use_microseconds">true</parameter>
     <parameter key="monolog.swift_mailer.handlers" type="collection"/>
     <parameter key="monolog.handlers_to_channels" type="collection">
@@ -249,6 +252,13 @@
       </parameter>
     </parameter>
     <parameter key="env(VAR_DUMPER_SERVER)">127.0.0.1:9912</parameter>
+    <parameter key="knp_paginator.template.pagination">@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig</parameter>
+    <parameter key="knp_paginator.template.filtration">@KnpPaginator/Pagination/filtration.html.twig</parameter>
+    <parameter key="knp_paginator.template.sortable">@KnpPaginator/Pagination/sortable_link.html.twig</parameter>
+    <parameter key="knp_paginator.page_range">5</parameter>
+    <parameter key="knp_paginator.page_limit">null</parameter>
+    <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
+    <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -383,6 +393,7 @@
     <service id="App\Repository\VideoRepository" class="App\Repository\VideoRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
+      <argument type="service" id="knp_paginator"/>
     </service>
     <service id="App\Security\LoginAuthenticator" class="App\Security\LoginAuthenticator" autowire="true" autoconfigure="true">
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
@@ -1603,6 +1614,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.ar.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.ar.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.ar.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ar.xliff</argument>
           </argument>
           <argument key="az" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.az.xlf</argument>
@@ -1618,6 +1630,10 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.bg.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.bg.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.bg.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.bg.xliff</argument>
+          </argument>
+          <argument key="bs" type="collection">
+            <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.bs.xlf</argument>
           </argument>
           <argument key="ca" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.ca.xlf</argument>
@@ -1628,6 +1644,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.cs.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.cs.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.cs.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.cs.xliff</argument>
           </argument>
           <argument key="cy" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.cy.xlf</argument>
@@ -1636,11 +1653,13 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.da.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.da.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.da.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.da.xliff</argument>
           </argument>
           <argument key="de" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.de.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.de.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.de.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.de.xliff</argument>
           </argument>
           <argument key="el" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.el.xlf</argument>
@@ -1651,11 +1670,13 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.en.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.en.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.en.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.en.xliff</argument>
           </argument>
           <argument key="es" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.es.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.es.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.es.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.es.xliff</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.et.xlf</argument>
@@ -1665,11 +1686,13 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.eu.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.eu.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.eu.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.eu.xliff</argument>
           </argument>
           <argument key="fa" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.fa.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.fa.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.fa.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fa.xliff</argument>
           </argument>
           <argument key="fi" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.fi.xlf</argument>
@@ -1679,6 +1702,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.fr.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.fr.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.fr.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fr.xliff</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.gl.xlf</argument>
@@ -1699,6 +1723,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.hu.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.hu.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.hu.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.hu.xliff</argument>
           </argument>
           <argument key="hy" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.hy.xlf</argument>
@@ -1708,16 +1733,19 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.id.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.id.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.id.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.id.xliff</argument>
           </argument>
           <argument key="it" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.it.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.it.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.it.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.it.xliff</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.ja.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.ja.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.ja.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ja.xliff</argument>
           </argument>
           <argument key="lb" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.lb.xlf</argument>
@@ -1728,6 +1756,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.lt.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.lt.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.lt.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.lt.xliff</argument>
           </argument>
           <argument key="lv" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.lv.xlf</argument>
@@ -1747,6 +1776,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.nl.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.nl.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.nl.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.nl.xliff</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.nn.xlf</argument>
@@ -1757,11 +1787,13 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.no.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.no.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.no.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.no.xliff</argument>
           </argument>
           <argument key="pl" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.pl.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.pl.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.pl.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.pl.xliff</argument>
           </argument>
           <argument key="pt" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.pt.xlf</argument>
@@ -1771,16 +1803,19 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.pt_BR.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.pt_BR.xliff</argument>
           </argument>
           <argument key="ro" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.ro.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.ro.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.ro.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ro.xliff</argument>
           </argument>
           <argument key="ru" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.ru.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.ru.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.ru.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ru.xliff</argument>
           </argument>
           <argument key="sk" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.sk.xlf</argument>
@@ -1809,6 +1844,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.sv.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.sv.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.sv.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.sv.xliff</argument>
           </argument>
           <argument key="th" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.th.xlf</argument>
@@ -1823,11 +1859,13 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.tr.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.tr.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.tr.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.tr.xliff</argument>
           </argument>
           <argument key="uk" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.uk.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.uk.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.uk.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.uk.xliff</argument>
           </argument>
           <argument key="vi" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.vi.xlf</argument>
@@ -1845,11 +1883,18 @@
           <argument key="pt_PT" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.pt_PT.xlf</argument>
           </argument>
+          <argument key="ky" type="collection">
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ky.xliff</argument>
+          </argument>
+          <argument key="sw" type="collection">
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.sw.xliff</argument>
+          </argument>
         </argument>
         <argument key="scanned_directories" type="collection">
           <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations</argument>
+          <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations</argument>
           <argument>E:\Video-Sharing-Platform/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\symfony\framework-bundle/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\symfony\twig-bundle/translations</argument>
@@ -1858,18 +1903,19 @@
           <argument>E:\Video-Sharing-Platform\vendor\doctrine\doctrine-bundle/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\doctrine\doctrine-migrations-bundle/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\symfony\security-bundle/translations</argument>
-          <argument>E:\Video-Sharing-Platform\vendor\symfony\web-profiler-bundle/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\symfony\monolog-bundle/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\symfony\debug-bundle/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\symfony\maker-bundle\src/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\doctrine\doctrine-fixtures-bundle/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\symfony\webpack-encore-bundle\src/translations</argument>
+          <argument>E:\Video-Sharing-Platform\vendor\symfony\web-profiler-bundle/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
           <argument key="scanned_directories" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations</argument>
             <argument>translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\framework-bundle/translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\twig-bundle/translations</argument>
@@ -1878,12 +1924,12 @@
             <argument>E:\Video-Sharing-Platform\vendor\doctrine\doctrine-bundle/translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\doctrine\doctrine-migrations-bundle/translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-bundle/translations</argument>
-            <argument>E:\Video-Sharing-Platform\vendor\symfony\web-profiler-bundle/translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\monolog-bundle/translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\debug-bundle/translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\maker-bundle\src/translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\doctrine\doctrine-fixtures-bundle/translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\webpack-encore-bundle\src/translations</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\symfony\web-profiler-bundle/translations</argument>
           </argument>
         </argument>
       </argument>
@@ -2348,6 +2394,14 @@
         <argument>0</argument>
       </call>
       <call method="addListener">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
           <argument type="service" id="response_listener"/>
@@ -2716,14 +2770,6 @@
         <argument>0</argument>
       </call>
       <call method="addListener">
-        <argument>kernel.response</argument>
-        <argument type="collection">
-          <argument type="service" id="web_profiler.debug_toolbar"/>
-          <argument>onKernelResponse</argument>
-        </argument>
-        <argument>-128</argument>
-      </call>
-      <call method="addListener">
         <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="monolog.handler.console"/>
@@ -2764,12 +2810,60 @@
         <argument>0</argument>
       </call>
       <call method="addListener">
+        <argument>kernel.response</argument>
+        <argument type="collection">
+          <argument type="service" id="web_profiler.debug_toolbar"/>
+          <argument>onKernelResponse</argument>
+        </argument>
+        <argument>-128</argument>
+      </call>
+      <call method="addListener">
         <argument>Symfony\Component\Security\Http\Event\LogoutEvent</argument>
         <argument type="collection">
           <argument type="service" id="security.logout.listener.csrf_token_clearing"/>
           <argument>onLogout</argument>
         </argument>
         <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.paginate"/>
+          <argument>before</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.paginate"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.sortable"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.filtration"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>1</argument>
       </call>
     </service>
     <service id="debug.controller_resolver" class="Symfony\Component\HttpKernel\Controller\TraceableControllerResolver" public="false">
@@ -3236,10 +3330,13 @@
         <argument type="service" id="doctrine.twig.doctrine_extension"/>
       </call>
       <call method="addExtension">
-        <argument type="service" id="twig.extension.webprofiler"/>
+        <argument type="service" id="webpack_encore.twig_entry_files_extension"/>
       </call>
       <call method="addExtension">
-        <argument type="service" id="webpack_encore.twig_entry_files_extension"/>
+        <argument type="service" id="knp_paginator.twig.extension.pagination"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="twig.extension.webprofiler"/>
       </call>
       <call method="addGlobal">
         <argument>app</argument>
@@ -3311,20 +3408,28 @@
         <argument>!Security</argument>
       </call>
       <call method="addPath">
-        <argument>E:\Video-Sharing-Platform\vendor\symfony\web-profiler-bundle/Resources/views</argument>
-        <argument>WebProfiler</argument>
-      </call>
-      <call method="addPath">
-        <argument>E:\Video-Sharing-Platform\vendor\symfony\web-profiler-bundle/Resources/views</argument>
-        <argument>!WebProfiler</argument>
-      </call>
-      <call method="addPath">
         <argument>E:\Video-Sharing-Platform\vendor\symfony\debug-bundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
       <call method="addPath">
         <argument>E:\Video-Sharing-Platform\vendor\symfony\debug-bundle/Resources/views</argument>
         <argument>!Debug</argument>
+      </call>
+      <call method="addPath">
+        <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/templates</argument>
+        <argument>KnpPaginator</argument>
+      </call>
+      <call method="addPath">
+        <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/templates</argument>
+        <argument>!KnpPaginator</argument>
+      </call>
+      <call method="addPath">
+        <argument>E:\Video-Sharing-Platform\vendor\symfony\web-profiler-bundle/Resources/views</argument>
+        <argument>WebProfiler</argument>
+      </call>
+      <call method="addPath">
+        <argument>E:\Video-Sharing-Platform\vendor\symfony\web-profiler-bundle/Resources/views</argument>
+        <argument>!WebProfiler</argument>
       </call>
       <call method="addPath">
         <argument>E:\Video-Sharing-Platform/templates</argument>
@@ -4811,60 +4916,6 @@
         <argument>security:encode-password</argument>
       </call>
     </service>
-    <service id=".2_HtmlDumper~MiGUSef" class="Symfony\Component\VarDumper\Dumper\HtmlDumper" public="false">
-      <argument>null</argument>
-      <argument>UTF-8</argument>
-      <argument>1</argument>
-      <call method="setDisplayOptions">
-        <argument type="collection">
-          <argument key="maxStringLength">4096</argument>
-          <argument key="fileLinkFormat" type="service" id="debug.file_link_formatter"/>
-        </argument>
-      </call>
-    </service>
-    <service id=".1_NonceGenerator~MiGUSef" class="Symfony\Bundle\WebProfilerBundle\Csp\NonceGenerator" public="false"/>
-    <service id="web_profiler.controller.profiler" class="Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController" public="true">
-      <argument type="service" id="router.default" on-invalid="null"/>
-      <argument type="service" id="profiler" on-invalid="null"/>
-      <argument type="service" id="twig"/>
-      <argument>%data_collector.templates%</argument>
-      <argument type="service" id="web_profiler.csp.handler"/>
-      <argument>E:\Video-Sharing-Platform</argument>
-    </service>
-    <service id="web_profiler.controller.router" class="Symfony\Bundle\WebProfilerBundle\Controller\RouterController" public="true">
-      <argument type="service" id="profiler" on-invalid="null"/>
-      <argument type="service" id="twig"/>
-      <argument type="service" id="router.default" on-invalid="null"/>
-      <argument>null</argument>
-      <argument type="tagged_iterator" tag="routing.expression_language_provider"/>
-    </service>
-    <service id="web_profiler.controller.exception_panel" class="Symfony\Bundle\WebProfilerBundle\Controller\ExceptionPanelController" public="true">
-      <argument type="service" id="error_handler.error_renderer.html"/>
-      <argument type="service" id="profiler" on-invalid="null"/>
-    </service>
-    <service id="web_profiler.csp.handler" class="Symfony\Bundle\WebProfilerBundle\Csp\ContentSecurityPolicyHandler" public="false">
-      <argument type="service" id=".1_NonceGenerator~MiGUSef"/>
-    </service>
-    <service id="twig.extension.webprofiler" class="Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension" public="false">
-      <tag name="twig.extension"/>
-      <argument type="service" id=".2_HtmlDumper~MiGUSef"/>
-    </service>
-    <service id="debug.file_link_formatter.url_format" class="string" public="false">
-      <argument type="service" id="router.default"/>
-      <argument>_profiler_open_file</argument>
-      <argument>?file=%%f&amp;line=%%l#line%%l</argument>
-      <factory class="Symfony\Component\HttpKernel\Debug\FileLinkFormatter" method="generateUrlFormat"/>
-    </service>
-    <service id="web_profiler.debug_toolbar" class="Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener" public="false">
-      <tag name="kernel.event_subscriber"/>
-      <tag name="container.hot_path"/>
-      <argument type="service" id="twig"/>
-      <argument>false</argument>
-      <argument>2</argument>
-      <argument type="service" id="router.default" on-invalid="ignore"/>
-      <argument>^/((index|app(_[\w]+)?)\.php/)?_wdt</argument>
-      <argument type="service" id="web_profiler.csp.handler"/>
-    </service>
     <service id="monolog.logger" class="Symfony\Bridge\Monolog\Logger" public="false">
       <argument>app</argument>
       <call method="pushProcessor">
@@ -4901,6 +4952,9 @@
     <service id="monolog.formatter.wildfire" class="Monolog\Formatter\WildfireFormatter" public="false"/>
     <service id="monolog.formatter.logstash" class="Monolog\Formatter\LogstashFormatter" public="false">
       <argument>app</argument>
+    </service>
+    <service id="monolog.http_client" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
+      <factory class="Symfony\Component\HttpClient\HttpClient" method="create"/>
     </service>
     <service id="monolog.processor.psr_log_message" class="Monolog\Processor\PsrLogMessageProcessor" public="false"/>
     <service id="monolog.handler.main" class="Monolog\Handler\StreamHandler">
@@ -5260,6 +5314,105 @@
       <argument type="collection">
         <argument key="_default" type="service" id="webpack_encore.entrypoint_lookup[_default]"/>
       </argument>
+    </service>
+    <service id="knp_paginator" class="Knp\Component\Pager\Paginator" public="true" lazy="true">
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="request_stack"/>
+      <call method="setDefaultPaginatorOptions">
+        <argument type="collection">
+          <argument key="pageParameterName">page</argument>
+          <argument key="sortFieldParameterName">sort</argument>
+          <argument key="sortDirectionParameterName">direction</argument>
+          <argument key="filterFieldParameterName">filterField</argument>
+          <argument key="filterValueParameterName">filterValue</argument>
+          <argument key="distinct">true</argument>
+          <argument key="pageOutOfRange">ignore</argument>
+          <argument key="defaultLimit">10</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="knp_paginator.subscriber.paginate" class="Knp\Component\Pager\Event\Subscriber\Paginate\PaginationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sortable" class="Knp\Component\Pager\Event\Subscriber\Sortable\SortableSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.filtration" class="Knp\Component\Pager\Event\Subscriber\Filtration\FiltrationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sliding_pagination" class="Knp\Bundle\PaginatorBundle\Subscriber\SlidingPaginationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <tag name="container.hot_path"/>
+      <argument type="collection">
+        <argument key="defaultPaginationTemplate">@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig</argument>
+        <argument key="defaultSortableTemplate">@KnpPaginator/Pagination/sortable_link.html.twig</argument>
+        <argument key="defaultFiltrationTemplate">@KnpPaginator/Pagination/filtration.html.twig</argument>
+        <argument key="defaultPageRange">5</argument>
+        <argument key="defaultPageLimit">null</argument>
+      </argument>
+    </service>
+    <service id="knp_paginator.helper.processor" class="Knp\Bundle\PaginatorBundle\Helper\Processor">
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="translator.data_collector"/>
+    </service>
+    <service id="knp_paginator.twig.extension.pagination" class="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="knp_paginator.helper.processor"/>
+    </service>
+    <service id=".2_HtmlDumper~MiGUSef" class="Symfony\Component\VarDumper\Dumper\HtmlDumper" public="false">
+      <argument>null</argument>
+      <argument>UTF-8</argument>
+      <argument>1</argument>
+      <call method="setDisplayOptions">
+        <argument type="collection">
+          <argument key="maxStringLength">4096</argument>
+          <argument key="fileLinkFormat" type="service" id="debug.file_link_formatter"/>
+        </argument>
+      </call>
+    </service>
+    <service id=".1_NonceGenerator~MiGUSef" class="Symfony\Bundle\WebProfilerBundle\Csp\NonceGenerator" public="false"/>
+    <service id="web_profiler.controller.profiler" class="Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController" public="true">
+      <argument type="service" id="router.default" on-invalid="null"/>
+      <argument type="service" id="profiler" on-invalid="null"/>
+      <argument type="service" id="twig"/>
+      <argument>%data_collector.templates%</argument>
+      <argument type="service" id="web_profiler.csp.handler"/>
+      <argument>E:\Video-Sharing-Platform</argument>
+    </service>
+    <service id="web_profiler.controller.router" class="Symfony\Bundle\WebProfilerBundle\Controller\RouterController" public="true">
+      <argument type="service" id="profiler" on-invalid="null"/>
+      <argument type="service" id="twig"/>
+      <argument type="service" id="router.default" on-invalid="null"/>
+      <argument>null</argument>
+      <argument type="tagged_iterator" tag="routing.expression_language_provider"/>
+    </service>
+    <service id="web_profiler.controller.exception_panel" class="Symfony\Bundle\WebProfilerBundle\Controller\ExceptionPanelController" public="true">
+      <argument type="service" id="error_handler.error_renderer.html"/>
+      <argument type="service" id="profiler" on-invalid="null"/>
+    </service>
+    <service id="web_profiler.csp.handler" class="Symfony\Bundle\WebProfilerBundle\Csp\ContentSecurityPolicyHandler" public="false">
+      <argument type="service" id=".1_NonceGenerator~MiGUSef"/>
+    </service>
+    <service id="twig.extension.webprofiler" class="Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument type="service" id=".2_HtmlDumper~MiGUSef"/>
+    </service>
+    <service id="debug.file_link_formatter.url_format" class="string" public="false">
+      <argument type="service" id="router.default"/>
+      <argument>_profiler_open_file</argument>
+      <argument>?file=%%f&amp;line=%%l#line%%l</argument>
+      <factory class="Symfony\Component\HttpKernel\Debug\FileLinkFormatter" method="generateUrlFormat"/>
+    </service>
+    <service id="web_profiler.debug_toolbar" class="Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener" public="false">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.hot_path"/>
+      <argument type="service" id="twig"/>
+      <argument>false</argument>
+      <argument>2</argument>
+      <argument type="service" id="router.default" on-invalid="ignore"/>
+      <argument>^/((index|app(_[\w]+)?)\.php/)?_wdt</argument>
+      <argument type="service" id="web_profiler.csp.handler"/>
     </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
@@ -6479,6 +6632,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupCollectionInterface" alias="webpack_encore.entrypoint_lookup_collection" public="false"/>
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
+    <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="argument_resolver.controller_locator" alias=".service_locator.sKbT1_x"/>

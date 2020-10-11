@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AdminController extends AbstractController
 {
+    public $container;
     /**
      * @Route("/", name="admin_main_page")
      */

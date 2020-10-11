@@ -21,13 +21,20 @@ class FrontController extends AbstractController
     }
 
     /**
-     * @Route("/video-list/{category}/{id}", name="video_list")
+     * @Route("/video-list/{category}/{id}/{page}", defaults={ "page":"1" },name="video_list")
      */
-    public function videoList($id, CategoryTreeFrontPage $categories)
+    public function videoList($id, $page,CategoryTreeFrontPage $categories, Request $request)
     {
-         $categories->getCategoryListAndParent($id);
+        $categories->getCategoryListAndParent($id);
+        $ids = $categories ->getChildIds($id);
+        $ids[] = $id;
+
+
+
+        $videos = $this->getDoctrine()->getRepository(Video::class)->findByChildIds($ids, $page, $request->get('sortby'));
         return $this->render('front/video_list.html.twig', [
-            'subcategories' => $categories
+            'subcategories' => $categories ,
+            'videos' => $videos
         ]);
     }
 
@@ -40,11 +47,21 @@ class FrontController extends AbstractController
     }
 
     /**
-     * @Route("/search-results", methods={"POST"}, name="search_results")
+     * @Route("/search-results/{page}", methods={"GET"}, defaults={"page" = "1"},name="search_results")
      */
-    public function searchResults()
+    public function searchResults($page, Request $request)
     {
-        return $this->render('front/search_results.html.twig');
+        $videos = null;
+        $query = null;
+        if ($query = $request->get('query'))
+        {
+           $videos = $this->getDoctrine()->getRepository(Video::class)->findByTitle($query,$page,$request->get('sortby'));
+            if(!$videos->getItems()) $videos = null;
+        }
+        return $this->render('front/search_results.html.twig',[
+            'videos' => $videos,
+            'query' => $query
+        ]);
     }
 
     /**

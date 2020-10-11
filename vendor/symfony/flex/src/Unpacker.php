@@ -25,6 +25,7 @@ use Composer\Repository\CompositeRepository;
 use Composer\Repository\RepositorySet;
 use Composer\Semver\Constraint\MultiConstraint;
 use Composer\Semver\Intervals;
+use Composer\Semver\VersionParser;
 use Symfony\Flex\Unpack\Operation;
 use Symfony\Flex\Unpack\Result;
 
@@ -33,21 +34,21 @@ class Unpacker
     private $composer;
     private $resolver;
     private $dryRun;
+    private $versionParser;
 
     public function __construct(Composer $composer, PackageResolver $resolver, bool $dryRun)
     {
         $this->composer = $composer;
         $this->resolver = $resolver;
         $this->dryRun = $dryRun;
+        $this->versionParser = new VersionParser();
     }
 
-    public function unpack(Operation $op, Result $result = null): Result
+    public function unpack(Operation $op, Result $result = null, &$links = []): Result
     {
         if (null === $result) {
             $result = new Result();
         }
-
-        $links = [];
 
         $localRepo = $this->composer->getRepositoryManager()->getLocalRepository();
         foreach ($op->getPackages() as $package) {
@@ -83,7 +84,7 @@ class Unpacker
                     if ('symfony-pack' === $subPkg->getType()) {
                         $subOp = new Operation(true, $op->shouldSort());
                         $subOp->addPackage($subPkg->getName(), $constraint, $package['dev']);
-                        $result = $this->unpack($subOp, $result);
+                        $result = $this->unpack($subOp, $result, $links);
                         continue;
                     }
 
@@ -101,6 +102,7 @@ class Unpacker
 
                 $linkName = $link->getTarget();
                 $linkType = $package['dev'] ? 'require-dev' : 'require';
+                $constraint = $this->versionParser->parseConstraints($constraint);
 
                 if (isset($links[$linkName])) {
                     $links[$linkName]['constraints'][] = $constraint;
@@ -115,6 +117,10 @@ class Unpacker
                     ];
                 }
             }
+        }
+
+        if ($this->dryRun || 1 < \func_num_args()) {
+            return $result;
         }
 
         $jsonPath = Factory::getComposerFile();
@@ -136,23 +142,21 @@ class Unpacker
 
                 // removes package from "require-dev", because it will be moved to "require"
                 // save stored constraint
-                $link['constraints'][] = $jsonStored['require-dev'][$link['name']];
+                $link['constraints'][] = $this->versionParser->parseConstraints($jsonStored['require-dev'][$link['name']]);
                 $jsonManipulator->removeSubNode('require-dev', $link['name']);
             }
 
             $constraint = class_exists(Intervals::class, false)
-                ? Intervals::compactConstraint(MultiConstraint::create($link['constraints']))->getPrettyString()
+                ? Intervals::compactConstraint(MultiConstraint::create($link['constraints']))
                 : end($link['constraints'])
             ;
 
-            if (!$jsonManipulator->addLink($link['type'], $link['name'], $constraint, $op->shouldSort())) {
+            if (!$jsonManipulator->addLink($link['type'], $link['name'], $constraint->getPrettyString(), $op->shouldSort())) {
                 throw new \RuntimeException(sprintf('Unable to unpack package "%s".', $link['name']));
             }
         }
 
-        if (!$this->dryRun && 1 === \func_num_args()) {
-            file_put_contents($jsonPath, $jsonManipulator->getContents());
-        }
+        file_put_contents($jsonPath, $jsonManipulator->getContents());
 
         return $result;
     }
