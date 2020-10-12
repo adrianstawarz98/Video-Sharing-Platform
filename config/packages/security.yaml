@@ -28,9 +28,6 @@ security:
                 csrf_token_generator: security.csrf.token_manager
                 default_target_path: admin_main_page
                 username_parameter: _email
-            guard:
-                authenticators:
-                    - App\Security\LoginAuthenticator
             logout:
                 path: logout
                 target: main_page

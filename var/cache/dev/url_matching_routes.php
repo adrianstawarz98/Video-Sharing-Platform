@@ -21,7 +21,7 @@ return [
         '/' => [[['_route' => 'main_page', '_controller' => 'App\\Controller\\FrontController::index'], null, null, null, false, false, null]],
         '/video-details' => [[['_route' => 'video_details', '_controller' => 'App\\Controller\\FrontController::videoDetails'], null, null, null, false, false, null]],
         '/pricing' => [[['_route' => 'pricing', '_controller' => 'App\\Controller\\FrontController::pricing'], null, null, null, false, false, null]],
-        '/register' => [[['_route' => 'register', '_controller' => 'App\\Controller\\FrontController::register'], null, null, null, false, false, null]],
+        '/register' => [[['_route' => 'register', '_controller' => 'App\\Controller\\FrontController::register'], null, ['POST' => 0, 'GET' => 1], null, false, false, null]],
         '/payment' => [[['_route' => 'payment', '_controller' => 'App\\Controller\\FrontController::payment'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
