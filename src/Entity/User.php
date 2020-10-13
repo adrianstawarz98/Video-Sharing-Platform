@@ -55,7 +55,7 @@ class User implements UserInterface
     private $vimeo_api_key;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="User", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user", orphanRemoval=true)
      */
     private $comments;
 

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,8 +27,9 @@ class Comment
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false, name="user_id")
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=false, name="user_id",
+     * referencedColumnName="id", onDelete="CASCADE")
      */
     private $user;
 
@@ -82,7 +85,7 @@ class Comment
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->created_at;
     }
@@ -94,7 +97,7 @@ class Comment
     {
      if(isset($this->created_at2)) $this->created_at = $this->created_at2;
 
-     else $this->created_at = new\DateTime();
+     else $this->created_at = new DateTime();
      return $this;
     }
     public function setCreatedAtForFixtures($created_at): ?self

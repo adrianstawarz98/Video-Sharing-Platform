@@ -126,3 +126,17 @@ d8fcd0,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3D
 4f0b03,::1,GET,http://localhost:8000/favicon.ico,1602526806,,404
 6aea96,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1602526810,e894eb,404
 e894eb,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1602526810,,404
+5500cb,192.168.0.31,GET,http://192.168.0.31:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602585225,39541c,200
+39541c,192.168.0.31,GET,http://192.168.0.31:8000/,1602585225,,200
+174776,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602585709,25c3eb,200
+25c3eb,127.0.0.1,GET,http://127.0.0.1:8000/,1602585709,,200
+e9587b,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1602585713,eb6a75,404
+eb6a75,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1602585713,,404
+026740,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602586477,38c2f5,200
+38c2f5,127.0.0.1,GET,http://127.0.0.1:8000/,1602586477,,200
+2b49f0,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602586478,81f4e5,200
+81f4e5,127.0.0.1,GET,http://127.0.0.1:8000/,1602586478,,200
+6412ef,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602586669,6c71df,200
+6c71df,127.0.0.1,GET,http://127.0.0.1:8000/,1602586669,,200
+32b953,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602586669,a886ba,200
+a886ba,127.0.0.1,GET,http://127.0.0.1:8000/,1602586669,,200
