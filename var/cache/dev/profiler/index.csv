@@ -214,3 +214,15 @@ c911b9,127.0.0.1,GET,http://127.0.0.1:8000/video-list/toys/2,1602618685,,200
 089482,127.0.0.1,GET,http://127.0.0.1:8000/,1602618698,,200
 41b15c,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602618701,971d1d,200
 971d1d,127.0.0.1,GET,http://127.0.0.1:8000/video-list/toys/2,1602618701,,200
+a0a3e8,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602618945,e95b10,200
+e95b10,127.0.0.1,GET,http://127.0.0.1:8000/video-list/toys/2,1602618945,,200
+3b844f,127.0.0.1,GET,http://127.0.0.1:8000/login,1602618951,,200
+63c29d,127.0.0.1,GET,http://127.0.0.1:8000/logout,1602618953,,302
+8227e3,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602618954,1e7550,200
+1e7550,127.0.0.1,GET,http://127.0.0.1:8000/,1602618954,,200
+b9a539,127.0.0.1,GET,http://127.0.0.1:8000/login,1602618966,,200
+a6be45,127.0.0.1,POST,http://127.0.0.1:8000/login,1602618969,,302
+ccc75b,127.0.0.1,GET,http://127.0.0.1:8000/admin/,1602618970,,200
+246172,127.0.0.1,GET,http://127.0.0.1:8000/logout,1602618981,,302
+84510a,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602618982,55f943,200
+55f943,127.0.0.1,GET,http://127.0.0.1:8000/,1602618982,,200
