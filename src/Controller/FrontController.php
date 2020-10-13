@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Utils\CategoryTreeFrontPage;
@@ -29,6 +30,8 @@ class FrontController extends AbstractController
      */
     public function videoList($id, $page,CategoryTreeFrontPage $categories, Request $request)
     {
+
+
         $categories->getCategoryListAndParent($id);
         $ids = $categories ->getChildIds($id);
         $ids[] = $id;
@@ -38,7 +41,7 @@ class FrontController extends AbstractController
         $videos = $this->getDoctrine()->getRepository(Video::class)->findByChildIds($ids, $page, $request->get('sortby'));
         return $this->render('front/video_list.html.twig', [
             'subcategories' => $categories ,
-            'videos' => $videos
+            'videos' => $videos,
         ]);
     }
 
