@@ -24,7 +24,7 @@ return [
     'users' => [[], ['_controller' => 'App\\Controller\\AdminController::users'], [], [['text', '/admin/users']], [], []],
     'main_page' => [[], ['_controller' => 'App\\Controller\\FrontController::index'], [], [['text', '/']], [], []],
     'video_list' => [['category', 'id', 'page'], ['page' => '1', '_controller' => 'App\\Controller\\FrontController::videoList'], [], [['variable', '/', '[^/]++', 'page', true], ['variable', '/', '[^/]++', 'id', true], ['variable', '/', '[^/]++', 'category', true], ['text', '/video-list']], [], []],
-    'video_details' => [[], ['_controller' => 'App\\Controller\\FrontController::videoDetails'], [], [['text', '/video-details']], [], []],
+    'video_details' => [['video'], ['_controller' => 'App\\Controller\\FrontController::videoDetails'], [], [['variable', '/', '[^/]++', 'video', true], ['text', '/video-details']], [], []],
     'search_results' => [['page'], ['page' => '1', '_controller' => 'App\\Controller\\FrontController::searchResults'], [], [['variable', '/', '[^/]++', 'page', true], ['text', '/search-results']], [], []],
     'pricing' => [[], ['_controller' => 'App\\Controller\\FrontController::pricing'], [], [['text', '/pricing']], [], []],
     'register' => [[], ['_controller' => 'App\\Controller\\FrontController::register'], [], [['text', '/register']], [], []],

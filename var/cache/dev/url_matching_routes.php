@@ -19,7 +19,6 @@ return [
         '/admin/upload-video' => [[['_route' => 'upload_video', '_controller' => 'App\\Controller\\AdminController::uploadVideo'], null, null, null, false, false, null]],
         '/admin/users' => [[['_route' => 'users', '_controller' => 'App\\Controller\\AdminController::users'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'main_page', '_controller' => 'App\\Controller\\FrontController::index'], null, null, null, false, false, null]],
-        '/video-details' => [[['_route' => 'video_details', '_controller' => 'App\\Controller\\FrontController::videoDetails'], null, null, null, false, false, null]],
         '/pricing' => [[['_route' => 'pricing', '_controller' => 'App\\Controller\\FrontController::pricing'], null, null, null, false, false, null]],
         '/register' => [[['_route' => 'register', '_controller' => 'App\\Controller\\FrontController::register'], null, ['POST' => 0, 'GET' => 1], null, false, false, null]],
         '/payment' => [[['_route' => 'payment', '_controller' => 'App\\Controller\\FrontController::payment'], null, null, null, false, false, null]],
@@ -47,8 +46,11 @@ return [
                     .'|edit\\-category/([^/]++)(*:202)'
                     .'|delete\\-category/([^/]++)(*:235)'
                 .')'
-                .'|/video\\-list/([^/]++)/([^/]++)(?:/([^/]++))?(*:288)'
-                .'|/search\\-results(?:/([^/]++))?(*:326)'
+                .'|/video\\-(?'
+                    .'|list/([^/]++)/([^/]++)(?:/([^/]++))?(*:291)'
+                    .'|details/([^/]++)(*:315)'
+                .')'
+                .'|/search\\-results(?:/([^/]++))?(*:354)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -61,8 +63,9 @@ return [
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         202 => [[['_route' => 'edit_category', '_controller' => 'App\\Controller\\AdminController::editCategory'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
         235 => [[['_route' => 'delete_category', '_controller' => 'App\\Controller\\AdminController::deleteCategory'], ['id'], null, null, false, true, null]],
-        288 => [[['_route' => 'video_list', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::videoList'], ['category', 'id', 'page'], null, null, false, true, null]],
-        326 => [
+        291 => [[['_route' => 'video_list', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::videoList'], ['category', 'id', 'page'], null, null, false, true, null]],
+        315 => [[['_route' => 'video_details', '_controller' => 'App\\Controller\\FrontController::videoDetails'], ['video'], null, null, false, true, null]],
+        354 => [
             [['_route' => 'search_results', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::searchResults'], ['page'], ['GET' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

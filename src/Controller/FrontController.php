@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\VideoRepository;
 use App\Utils\CategoryTreeFrontPage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -46,11 +47,14 @@ class FrontController extends AbstractController
     }
 
     /**
-     * @Route("/video-details", name="video_details")
+     * @Route("/video-details/{video}", name="video_details")
      */
-    public function videoDetails()
+    public function videoDetails($video, VideoRepository $repository)
     {
-        return $this->render('front/video_details.html.twig');
+        $videos = $repository->videoDetails($video);
+        return $this->render('front/video_details.html.twig',[
+            'video' => $videos
+        ]);
     }
 
     /**

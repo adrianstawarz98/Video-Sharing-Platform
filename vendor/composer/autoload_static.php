@@ -128,6 +128,7 @@ class ComposerStaticInit3601fcf0bf31be243758bed13c347b75
         'K' => 
         array (
             'Knp\\Component\\' => 14,
+            'Knp\\Bundle\\TimeBundle\\' => 22,
             'Knp\\Bundle\\PaginatorBundle\\' => 27,
         ),
         'E' => 
@@ -496,6 +497,10 @@ class ComposerStaticInit3601fcf0bf31be243758bed13c347b75
         array (
             0 => __DIR__ . '/..' . '/knplabs/knp-components/src/Knp/Component',
         ),
+        'Knp\\Bundle\\TimeBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-time-bundle',
+        ),
         'Knp\\Bundle\\PaginatorBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle/src',
@@ -591,16 +596,23 @@ class ComposerStaticInit3601fcf0bf31be243758bed13c347b75
         'App\\Controller\\SecurityController' => __DIR__ . '/../..' . '/src/Controller/SecurityController.php',
         'App\\DataFixtures\\AppFixtures' => __DIR__ . '/../..' . '/src/DataFixtures/AppFixtures.php',
         'App\\DataFixtures\\CategoryFixtures' => __DIR__ . '/../..' . '/src/DataFixtures/CategoryFixtures.php',
+        'App\\DataFixtures\\CommentFixtures' => __DIR__ . '/../..' . '/src/DataFixtures/CommentFixtures.php',
         'App\\DataFixtures\\UserFixtures' => __DIR__ . '/../..' . '/src/DataFixtures/UserFixtures.php',
         'App\\DataFixtures\\VideoFixtures' => __DIR__ . '/../..' . '/src/DataFixtures/VideoFixtures.php',
         'App\\Entity\\Category' => __DIR__ . '/../..' . '/src/Entity/Category.php',
+        'App\\Entity\\Comment' => __DIR__ . '/../..' . '/src/Entity/Comment.php',
         'App\\Entity\\User' => __DIR__ . '/../..' . '/src/Entity/User.php',
         'App\\Entity\\Video' => __DIR__ . '/../..' . '/src/Entity/Video.php',
         'App\\Form\\CategoryType' => __DIR__ . '/../..' . '/src/Form/CategoryType.php',
+        'App\\Form\\RegistrationFormType' => __DIR__ . '/../..' . '/src/Form/RegistrationFormType.php',
+        'App\\Form\\RegistrationType' => __DIR__ . '/../..' . '/src/Form/RegistrationType.php',
+        'App\\Form\\UserType' => __DIR__ . '/../..' . '/src/Form/UserType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
         'App\\Repository\\CategoryRepository' => __DIR__ . '/../..' . '/src/Repository/CategoryRepository.php',
+        'App\\Repository\\CommentRepository' => __DIR__ . '/../..' . '/src/Repository/CommentRepository.php',
         'App\\Repository\\UserRepository' => __DIR__ . '/../..' . '/src/Repository/UserRepository.php',
         'App\\Repository\\VideoRepository' => __DIR__ . '/../..' . '/src/Repository/VideoRepository.php',
+        'App\\Security\\EmailVerifier' => __DIR__ . '/../..' . '/src/Security/EmailVerifier.php',
         'App\\Security\\LoginAuthenticator' => __DIR__ . '/../..' . '/src/Security/LoginAuthenticator.php',
         'App\\Tests\\AdminCategoriesTest' => __DIR__ . '/../..' . '/tests/Admin/AdminCategoriesTest.php',
         'App\\Tests\\RoleUser' => __DIR__ . '/../..' . '/tests/RoleUser.php',
@@ -1790,6 +1802,11 @@ class ComposerStaticInit3601fcf0bf31be243758bed13c347b75
         'Knp\\Bundle\\PaginatorBundle\\Subscriber\\SlidingPaginationSubscriber' => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle/src/Subscriber/SlidingPaginationSubscriber.php',
         'Knp\\Bundle\\PaginatorBundle\\Templating\\PaginationHelper' => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle/src/Templating/PaginationHelper.php',
         'Knp\\Bundle\\PaginatorBundle\\Twig\\Extension\\PaginationExtension' => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle/src/Twig/Extension/PaginationExtension.php',
+        'Knp\\Bundle\\TimeBundle\\DateTimeFormatter' => __DIR__ . '/..' . '/knplabs/knp-time-bundle/DateTimeFormatter.php',
+        'Knp\\Bundle\\TimeBundle\\DependencyInjection\\KnpTimeExtension' => __DIR__ . '/..' . '/knplabs/knp-time-bundle/DependencyInjection/KnpTimeExtension.php',
+        'Knp\\Bundle\\TimeBundle\\KnpTimeBundle' => __DIR__ . '/..' . '/knplabs/knp-time-bundle/KnpTimeBundle.php',
+        'Knp\\Bundle\\TimeBundle\\Templating\\Helper\\TimeHelper' => __DIR__ . '/..' . '/knplabs/knp-time-bundle/Templating/Helper/TimeHelper.php',
+        'Knp\\Bundle\\TimeBundle\\Twig\\Extension\\TimeExtension' => __DIR__ . '/..' . '/knplabs/knp-time-bundle/Twig/Extension/TimeExtension.php',
         'Knp\\Component\\Pager\\Event\\AfterEvent' => __DIR__ . '/..' . '/knplabs/knp-components/src/Knp/Component/Pager/Event/AfterEvent.php',
         'Knp\\Component\\Pager\\Event\\BeforeEvent' => __DIR__ . '/..' . '/knplabs/knp-components/src/Knp/Component/Pager/Event/BeforeEvent.php',
         'Knp\\Component\\Pager\\Event\\Event' => __DIR__ . '/..' . '/knplabs/knp-components/src/Knp/Component/Pager/Event/Event.php',

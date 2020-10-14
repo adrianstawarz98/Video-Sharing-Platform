@@ -21,6 +21,7 @@
       <parameter key="WebpackEncoreBundle">Symfony\WebpackEncoreBundle\WebpackEncoreBundle</parameter>
       <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
+      <parameter key="KnpTimeBundle">Knp\Bundle\TimeBundle\KnpTimeBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -78,6 +79,10 @@
       <parameter key="WebProfilerBundle" type="collection">
         <parameter key="path">E:\Video-Sharing-Platform\vendor\symfony\web-profiler-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\WebProfilerBundle</parameter>
+      </parameter>
+      <parameter key="KnpTimeBundle" type="collection">
+        <parameter key="path">E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle</parameter>
+        <parameter key="namespace">Knp\Bundle\TimeBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -259,6 +264,8 @@
     <parameter key="knp_paginator.page_limit">null</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
+    <parameter key="time.datetime_formatter.class">Knp\Bundle\TimeBundle\DateTimeFormatter</parameter>
+    <parameter key="time.twig.extension.time.class">Knp\Bundle\TimeBundle\Twig\Extension\TimeExtension</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -1635,6 +1642,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.ar.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.ar.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ar.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.ar.xliff</argument>
           </argument>
           <argument key="az" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.az.xlf</argument>
@@ -1651,6 +1659,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.bg.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.bg.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.bg.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.bg.xliff</argument>
           </argument>
           <argument key="bs" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.bs.xlf</argument>
@@ -1659,12 +1668,14 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.ca.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.ca.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.ca.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.ca.xliff</argument>
           </argument>
           <argument key="cs" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.cs.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.cs.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.cs.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.cs.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.cs.xliff</argument>
           </argument>
           <argument key="cy" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.cy.xlf</argument>
@@ -1674,12 +1685,14 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.da.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.da.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.da.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.da.xliff</argument>
           </argument>
           <argument key="de" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.de.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.de.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.de.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.de.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.de.xliff</argument>
           </argument>
           <argument key="el" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.el.xlf</argument>
@@ -1691,12 +1704,14 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.en.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.en.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.en.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.en.xliff</argument>
           </argument>
           <argument key="es" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.es.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.es.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.es.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.es.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.es.xliff</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.et.xlf</argument>
@@ -1707,6 +1722,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.eu.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.eu.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.eu.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.eu.xliff</argument>
           </argument>
           <argument key="fa" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.fa.xlf</argument>
@@ -1717,12 +1733,14 @@
           <argument key="fi" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.fi.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.fi.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.fi.xliff</argument>
           </argument>
           <argument key="fr" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.fr.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.fr.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.fr.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fr.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.fr.xliff</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.gl.xlf</argument>
@@ -1744,6 +1762,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.hu.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.hu.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.hu.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.hu.xliff</argument>
           </argument>
           <argument key="hy" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.hy.xlf</argument>
@@ -1754,18 +1773,21 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.id.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.id.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.id.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.id.xliff</argument>
           </argument>
           <argument key="it" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.it.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.it.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.it.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.it.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.it.xliff</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.ja.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.ja.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.ja.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ja.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.ja.xliff</argument>
           </argument>
           <argument key="lb" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.lb.xlf</argument>
@@ -1777,6 +1799,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.lt.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.lt.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.lt.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.lt.xliff</argument>
           </argument>
           <argument key="lv" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.lv.xlf</argument>
@@ -1797,6 +1820,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.nl.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.nl.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.nl.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.nl.xliff</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.nn.xlf</argument>
@@ -1814,38 +1838,45 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.pl.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.pl.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.pl.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.pl.xliff</argument>
           </argument>
           <argument key="pt" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.pt.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.pt.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.pt.xliff</argument>
           </argument>
           <argument key="pt_BR" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.pt_BR.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.pt_BR.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.pt_BR.xliff</argument>
           </argument>
           <argument key="ro" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.ro.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.ro.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.ro.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ro.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.ro.xliff</argument>
           </argument>
           <argument key="ru" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.ru.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.ru.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.ru.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ru.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.ru.xliff</argument>
           </argument>
           <argument key="sk" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.sk.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.sk.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.sk.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.sk.xliff</argument>
           </argument>
           <argument key="sl" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.sl.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.sl.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.sl.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.sl.xliff</argument>
           </argument>
           <argument key="sq" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.sq.xlf</argument>
@@ -1865,10 +1896,12 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.sv.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.sv.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.sv.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.sv.xliff</argument>
           </argument>
           <argument key="th" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.th.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.th.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.th.xliff</argument>
           </argument>
           <argument key="tl" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.tl.xlf</argument>
@@ -1880,34 +1913,59 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.tr.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.tr.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.tr.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.tr.xliff</argument>
           </argument>
           <argument key="uk" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.uk.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.uk.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.uk.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.uk.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.uk.xliff</argument>
           </argument>
           <argument key="vi" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.vi.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.vi.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.vi.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.vi.xliff</argument>
           </argument>
           <argument key="zh_CN" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.zh_CN.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations\validators.zh_CN.xlf</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.zh_CN.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.zh_CN.xliff</argument>
           </argument>
           <argument key="zh_TW" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\validator/Resources/translations\validators.zh_TW.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.zh_TW.xliff</argument>
           </argument>
           <argument key="pt_PT" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations\security.pt_PT.xlf</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.pt_PT.xliff</argument>
           </argument>
           <argument key="ky" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ky.xliff</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.ky.xliff</argument>
           </argument>
           <argument key="sw" type="collection">
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.sw.xliff</argument>
+          </argument>
+          <argument key="bs_Latn_BA" type="collection">
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.bs_Latn_BA.xliff</argument>
+          </argument>
+          <argument key="eo" type="collection">
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.eo.xliff</argument>
+          </argument>
+          <argument key="hr_HR" type="collection">
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.hr_HR.xliff</argument>
+          </argument>
+          <argument key="sr_Latin" type="collection">
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.sr_Latin.xliff</argument>
+          </argument>
+          <argument key="zh" type="collection">
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.zh.xliff</argument>
+          </argument>
+          <argument key="zh_HK" type="collection">
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations\time.zh_HK.xliff</argument>
           </argument>
         </argument>
         <argument key="scanned_directories" type="collection">
@@ -1915,6 +1973,7 @@
           <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations</argument>
+          <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations</argument>
           <argument>E:\Video-Sharing-Platform/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\symfony\framework-bundle/translations</argument>
           <argument>E:\Video-Sharing-Platform\vendor\symfony\twig-bundle/translations</argument>
@@ -1936,6 +1995,7 @@
             <argument>E:\Video-Sharing-Platform\vendor\symfony\form/Resources/translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\security-core/Resources/translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-paginator-bundle/translations</argument>
+            <argument>E:\Video-Sharing-Platform\vendor\knplabs\knp-time-bundle/Resources/translations</argument>
             <argument>translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\framework-bundle/translations</argument>
             <argument>E:\Video-Sharing-Platform\vendor\symfony\twig-bundle/translations</argument>
@@ -3357,6 +3417,9 @@
       </call>
       <call method="addExtension">
         <argument type="service" id="twig.extension.webprofiler"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="time.twig.extension.time"/>
       </call>
       <call method="addGlobal">
         <argument>app</argument>
@@ -5413,6 +5476,13 @@
       <argument>^/((index|app(_[\w]+)?)\.php/)?_wdt</argument>
       <argument type="service" id="web_profiler.csp.handler"/>
     </service>
+    <service id="time.datetime_formatter" class="Knp\Bundle\TimeBundle\DateTimeFormatter">
+      <argument type="service" id="translator.data_collector"/>
+    </service>
+    <service id="time.twig.extension.time" class="Knp\Bundle\TimeBundle\Twig\Extension\TimeExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument type="service" id="time.datetime_formatter"/>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5727,6 +5797,12 @@
         <argument key="categories" type="service" id="App\Utils\CategoryTreeFrontPage"/>
       </argument>
     </service>
+    <service id=".service_locator.XPb5eI7" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service" id="App\Repository\VideoRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.j5_bHjD" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5739,7 +5815,7 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.dGe3zlA" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.DOmyr_9" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::categories" type="service" id=".service_locator.xaYlDwo"/>
@@ -5747,6 +5823,7 @@
         <argument key="App\Controller\AdminController::editCategory" type="service" id=".service_locator.wNIwF8O"/>
         <argument key="App\Controller\AdminController::getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
         <argument key="App\Controller\FrontController::register" type="service" id=".service_locator.j5_bHjD"/>
+        <argument key="App\Controller\FrontController::videoDetails" type="service" id=".service_locator.XPb5eI7"/>
         <argument key="App\Controller\FrontController::videoList" type="service" id=".service_locator.ijavLg8"/>
         <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.xA8Fw_."/>
         <argument key="App\Kernel::loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
@@ -5760,6 +5837,7 @@
         <argument key="App\Controller\AdminController:editCategory" type="service" id=".service_locator.wNIwF8O"/>
         <argument key="App\Controller\AdminController:getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
         <argument key="App\Controller\FrontController:register" type="service" id=".service_locator.j5_bHjD"/>
+        <argument key="App\Controller\FrontController:videoDetails" type="service" id=".service_locator.XPb5eI7"/>
         <argument key="App\Controller\FrontController:videoList" type="service" id=".service_locator.ijavLg8"/>
         <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.xA8Fw_."/>
         <argument key="kernel:loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
@@ -6239,12 +6317,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.dGe3zlA"/>
+      <argument type="service" id=".service_locator.DOmyr_9"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.dGe3zlA"/>
+      <argument type="service" id=".service_locator.DOmyr_9"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6654,9 +6732,10 @@
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupCollectionInterface" alias="webpack_encore.entrypoint_lookup_collection" public="false"/>
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
     <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
+    <service id="Knp\Bundle\TimeBundle\DateTimeFormatter" alias="time.datetime_formatter"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.dGe3zlA"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.DOmyr_9"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

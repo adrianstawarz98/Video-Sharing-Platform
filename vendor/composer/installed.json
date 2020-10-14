@@ -1852,6 +1852,74 @@
         ]
     },
     {
+        "name": "knplabs/knp-time-bundle",
+        "version": "v1.13.0",
+        "version_normalized": "1.13.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/KnpLabs/KnpTimeBundle.git",
+            "reference": "af883db02080083444034b0d95f1103d181574ef"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/KnpLabs/KnpTimeBundle/zipball/af883db02080083444034b0d95f1103d181574ef",
+            "reference": "af883db02080083444034b0d95f1103d181574ef",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1.3",
+            "symfony/config": "~3.4|^4.3|^5.0",
+            "symfony/dependency-injection": "~3.4|^4.3|^5.0",
+            "symfony/translation": "^4.3|^5.0"
+        },
+        "require-dev": {
+            "symfony/framework-bundle": "^4.3|^5.0",
+            "symfony/phpunit-bridge": "^4.3|^5.0",
+            "symfony/templating": "~3.4|^4.3|^5.0",
+            "symfony/twig-bundle": "^4.3|^5.0"
+        },
+        "suggest": {
+            "symfony/twig-bundle": "to use the Twig time_diff function"
+        },
+        "time": "2020-08-14T14:19:03+00:00",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Knp\\Bundle\\TimeBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "KnpLabs Team",
+                "homepage": "http://knplabs.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://github.com/KnpLabs/KnpTimeBundle/contributors"
+            }
+        ],
+        "description": "Knplabs time bundle makes your dates look sensible and descriptive",
+        "homepage": "http://github.com/KnpLabs/KnpTimeBundle",
+        "keywords": [
+            "bundle",
+            "date",
+            "descriptive time",
+            "knp",
+            "knplabs",
+            "time"
+        ]
+    },
+    {
         "name": "laminas/laminas-code",
         "version": "3.4.1",
         "version_normalized": "3.4.1.0",
