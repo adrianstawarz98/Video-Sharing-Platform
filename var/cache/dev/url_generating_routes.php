@@ -29,6 +29,8 @@ return [
     'pricing' => [[], ['_controller' => 'App\\Controller\\FrontController::pricing'], [], [['text', '/pricing']], [], []],
     'register' => [[], ['_controller' => 'App\\Controller\\FrontController::register'], [], [['text', '/register']], [], []],
     'payment' => [[], ['_controller' => 'App\\Controller\\FrontController::payment'], [], [['text', '/payment']], [], []],
+    'new_comment' => [['video'], ['_controller' => 'App\\Controller\\FrontController::newComment'], [], [['variable', '/', '[^/]++', 'video', true], ['text', '/new-comment']], [], []],
+    'delete_comment' => [['comment'], ['_controller' => 'App\\Controller\\FrontController::deleteComment'], [], [['variable', '/', '[^/]++', 'comment', true], ['text', '/delete-comment']], [], []],
     'login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
     'logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
 ];

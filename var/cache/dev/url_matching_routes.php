@@ -51,6 +51,8 @@ return [
                     .'|details/([^/]++)(*:315)'
                 .')'
                 .'|/search\\-results(?:/([^/]++))?(*:354)'
+                .'|/new\\-comment/([^/]++)(*:384)'
+                .'|/delete\\-comment/([^/]++)(*:417)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -65,8 +67,10 @@ return [
         235 => [[['_route' => 'delete_category', '_controller' => 'App\\Controller\\AdminController::deleteCategory'], ['id'], null, null, false, true, null]],
         291 => [[['_route' => 'video_list', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::videoList'], ['category', 'id', 'page'], null, null, false, true, null]],
         315 => [[['_route' => 'video_details', '_controller' => 'App\\Controller\\FrontController::videoDetails'], ['video'], null, null, false, true, null]],
-        354 => [
-            [['_route' => 'search_results', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::searchResults'], ['page'], ['GET' => 0], null, false, true, null],
+        354 => [[['_route' => 'search_results', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::searchResults'], ['page'], ['GET' => 0], null, false, true, null]],
+        384 => [[['_route' => 'new_comment', '_controller' => 'App\\Controller\\FrontController::newComment'], ['video'], ['POST' => 0], null, false, true, null]],
+        417 => [
+            [['_route' => 'delete_comment', '_controller' => 'App\\Controller\\FrontController::deleteComment'], ['comment'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

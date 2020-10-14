@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\VideoRepository;
 use App\Utils\CategoryTreeFrontPage;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Category;
@@ -140,5 +141,34 @@ class FrontController extends AbstractController
     $token = new UsernamePasswordToken($user,$password,'main',$user->getRoles());
     $this->get('security.token_storage')->setToken($token);
     $this->get('session')->set('_security_main',serialize($token));
+    }
+    /**
+     * @Route("/new-comment/{video}", name="new_comment", methods={"POST"})
+     */
+    public function newComment(Video $video, Request $request)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+        if(!empty(trim($request->get('comment')))){
+            $comment = new Comment();
+            $comment->setContent($request->get('comment'));
+            $comment->setUser($this->getUser());
+            $comment->setVideo($video);
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($comment);
+        }
+        $em->flush();
+        return $this->redirectToRoute('video_details', ['video'=>$video->getId()]);
+    }
+    /**
+     * @Route("/delete-comment/{comment}", name="delete_comment")
+     * @Security("user.getId() == comment.getUser().getId()")
+     */
+    public function deleteComment(Comment $comment, Request $request)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+            $em=$this->getDoctrine()->getManager();
+            $em->remove($comment);
+        $em->flush();
+        return $this->redirect($request->headers->get('referer'));
     }
 }
