@@ -23,11 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54e99f70-da0a-4c03-b0e8-7181e77490b7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/includes/__likes.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201013182922.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/VideoFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/VideoFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Video.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Video.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/includes/__videos.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/__videos.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
@@ -255,7 +253,7 @@
       <workItem from="1602664975643" duration="8163000" />
       <workItem from="1602696580414" duration="474000" />
       <workItem from="1602843145272" duration="849000" />
-      <workItem from="1602847755467" duration="1188000" />
+      <workItem from="1602847755467" duration="1916000" />
     </task>
     <servers />
   </component>
@@ -363,10 +361,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1601314280687" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1602848289480">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1602849613709">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1602848289480" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1602849613709" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
