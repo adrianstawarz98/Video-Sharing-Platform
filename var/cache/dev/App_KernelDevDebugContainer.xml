@@ -5875,10 +5875,11 @@
         <argument key="video_no_members" type="service" id="App\Utils\VideoForNoValidSubscription"/>
       </argument>
     </service>
-    <service id=".service_locator.MrT.xrC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.VOrpFXA" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="password_encoder" type="service" id="security.user_password_encoder.generic"/>
+        <argument key="session" type="service" id="session"/>
       </argument>
     </service>
     <service id=".service_locator.ztsmAhC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5887,7 +5888,7 @@
         <argument key="helper" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.9lJzq2A" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.LlJIMCz" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\Admin\MainController::getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
@@ -5900,7 +5901,7 @@
         <argument key="App\Controller\FrontController::videoDetails" type="service" id=".service_locator.UDzPtqt"/>
         <argument key="App\Controller\FrontController::videoList" type="service" id=".service_locator.A9cm4k6"/>
         <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.ztsmAhC"/>
-        <argument key="App\Controller\SecurityController::register" type="service" id=".service_locator.MrT.xrC"/>
+        <argument key="App\Controller\SecurityController::register" type="service" id=".service_locator.VOrpFXA"/>
         <argument key="App\Kernel::loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="App\Kernel::terminate" type="service" id=".service_locator.beq5mCo"/>
@@ -5917,7 +5918,7 @@
         <argument key="App\Controller\FrontController:videoDetails" type="service" id=".service_locator.UDzPtqt"/>
         <argument key="App\Controller\FrontController:videoList" type="service" id=".service_locator.A9cm4k6"/>
         <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.ztsmAhC"/>
-        <argument key="App\Controller\SecurityController:register" type="service" id=".service_locator.MrT.xrC"/>
+        <argument key="App\Controller\SecurityController:register" type="service" id=".service_locator.VOrpFXA"/>
         <argument key="kernel:loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel:registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel:terminate" type="service" id=".service_locator.beq5mCo"/>
@@ -6420,12 +6421,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.9lJzq2A"/>
+      <argument type="service" id=".service_locator.LlJIMCz"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.9lJzq2A"/>
+      <argument type="service" id=".service_locator.LlJIMCz"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6839,7 +6840,7 @@
     <service id="Knp\Bundle\TimeBundle\DateTimeFormatter" alias="time.datetime_formatter"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.9lJzq2A"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.LlJIMCz"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

@@ -43,3 +43,17 @@ ef4656,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_loc
 32f0d2,127.0.0.1,GET,http://127.0.0.1:8000/register?plan=pro,1602955649,,200
 f552da,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602955653,f004d5,200
 f004d5,127.0.0.1,GET,http://127.0.0.1:8000/register?plan=enterprise,1602955653,,200
+4b417d,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602958882,ee6799,200
+ee6799,127.0.0.1,GET,http://127.0.0.1:8000/,1602958882,,200
+caac3f,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602958885,d4fca7,200
+d4fca7,127.0.0.1,GET,http://127.0.0.1:8000/pricing,1602958885,,200
+46e125,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602958887,d36ae6,200
+d36ae6,127.0.0.1,GET,http://127.0.0.1:8000/register/enterprise,1602958887,,200
+25e8f3,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602958900,6d96e4,200
+6d96e4,127.0.0.1,GET,http://127.0.0.1:8000/register/pro,1602958900,,200
+0aef18,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602958936,12b300,200
+12b300,127.0.0.1,GET,http://127.0.0.1:8000/pricing,1602958936,,200
+e36a77,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602958947,e87363,200
+e87363,127.0.0.1,GET,http://127.0.0.1:8000/pricing,1602958947,,200
+a79e75,127.0.0.1,GET,http://127.0.0.1:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CFrontController%253A%253AmainCategories,1602958952,4bf457,200
+4bf457,127.0.0.1,GET,http://127.0.0.1:8000/register/enterprise,1602958952,,200

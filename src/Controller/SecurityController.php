@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Subscription;
 use App\Entity\User;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -14,10 +16,16 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/register", name="register")
+     * @Route("/register/{plan}", name="register")
      */
-    public function register(UserPasswordEncoderInterface $password_encoder, Request $request)
+    public function register(UserPasswordEncoderInterface $password_encoder, Request $request, SessionInterface $session, $plan)
     {
+        if($request->isMethod('GET'))
+        {
+            $session->set('planName',$plan);
+            $session->set('planPrice', Subscription::getPlanDataPriceByName($plan));
+
+        }
         $user = new User;
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);

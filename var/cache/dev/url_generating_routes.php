@@ -33,7 +33,7 @@ return [
     'dislike_video' => [['video'], ['_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], [], [['text', '/dislike'], ['variable', '/', '[^/]++', 'video', true], ['text', '/video-list']], [], []],
     'undo_like_video' => [['video'], ['_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], [], [['text', '/unlike'], ['variable', '/', '[^/]++', 'video', true], ['text', '/video-list']], [], []],
     'undo_dislike_video' => [['video'], ['_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], [], [['text', '/undodislike'], ['variable', '/', '[^/]++', 'video', true], ['text', '/video-list']], [], []],
-    'register' => [[], ['_controller' => 'App\\Controller\\SecurityController::register'], [], [['text', '/register']], [], []],
+    'register' => [['plan'], ['_controller' => 'App\\Controller\\SecurityController::register'], [], [['variable', '/', '[^/]++', 'plan', true], ['text', '/register']], [], []],
     'login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
     'logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
     'pricing' => [[], ['_controller' => 'App\\Controller\\SubscriptionController::pricing'], [], [['text', '/pricing']], [], []],
