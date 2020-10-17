@@ -24,6 +24,7 @@ return [
     'delete_category' => [['id'], ['_controller' => 'App\\Controller\\Admin\\Superadmin\\CategoryController::deleteCategory'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/su/delete-category']], [], []],
     'upload_video' => [[], ['_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::uploadVideo'], [], [['text', '/admin/su/upload-video']], [], []],
     'users' => [[], ['_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::users'], [], [['text', '/admin/su/users']], [], []],
+    'delete_user' => [['user'], ['_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::deleteUser'], [], [['variable', '/', '[^/]++', 'user', true], ['text', '/admin/su/delete-user']], [], []],
     'main_page' => [[], ['_controller' => 'App\\Controller\\FrontController::index'], [], [['text', '/']], [], []],
     'video_list' => [['categoryname', 'id', 'page'], ['page' => '1', '_controller' => 'App\\Controller\\FrontController::videoList'], [], [['variable', '/', '[^/]++', 'page', true], ['variable', ',', '[^/]++', 'id', true], ['variable', '/', '[^/,]++', 'categoryname', true], ['text', '/video-list/category']], [], []],
     'video_details' => [['video'], ['_controller' => 'App\\Controller\\FrontController::videoDetails'], [], [['variable', '/', '[^/]++', 'video', true], ['text', '/video-details']], [], []],

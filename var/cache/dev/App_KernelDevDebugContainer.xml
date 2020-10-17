@@ -5831,6 +5831,12 @@
         <argument key="loader" type="service" id=".errored..service_locator.C9JCBPC.Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
+    <service id=".service_locator.MrT.xrC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="password_encoder" type="service" id="security.user_password_encoder.generic"/>
+      </argument>
+    </service>
     <service id=".service_locator.0XdlIh3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5847,6 +5853,12 @@
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="category" type="service" id=".errored..service_locator.wNIwF8O.App\Entity\Category"/>
+      </argument>
+    </service>
+    <service id=".service_locator.hEwcf7A" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="user" type="service" id=".errored..service_locator.hEwcf7A.App\Entity\User"/>
       </argument>
     </service>
     <service id=".service_locator.A9cm4k6" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5894,13 +5906,15 @@
         <argument key="session" type="service" id="session"/>
       </argument>
     </service>
-    <service id=".service_locator.IRqiCrm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.0Z8XQNl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\Admin\MainController::getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
+        <argument key="App\Controller\Admin\MainController::index" type="service" id=".service_locator.MrT.xrC"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController::categories" type="service" id=".service_locator.jT4SQLC"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController::deleteCategory" type="service" id=".service_locator.wNIwF8O"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController::editCategory" type="service" id=".service_locator.wNIwF8O"/>
+        <argument key="App\Controller\Admin\Superadmin\SuperAdminController::deleteUser" type="service" id=".service_locator.hEwcf7A"/>
         <argument key="App\Controller\FrontController::newComment" type="service" id=".service_locator.TZbBIQs"/>
         <argument key="App\Controller\FrontController::searchResults" type="service" id=".service_locator.NIQ8BRW"/>
         <argument key="App\Controller\FrontController::toggleLikesAjax" type="service" id=".service_locator.TZbBIQs"/>
@@ -5916,9 +5930,11 @@
         <argument key="kernel::registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel::terminate" type="service" id=".service_locator.beq5mCo"/>
         <argument key="App\Controller\Admin\MainController:getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
+        <argument key="App\Controller\Admin\MainController:index" type="service" id=".service_locator.MrT.xrC"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController:categories" type="service" id=".service_locator.jT4SQLC"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController:deleteCategory" type="service" id=".service_locator.wNIwF8O"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController:editCategory" type="service" id=".service_locator.wNIwF8O"/>
+        <argument key="App\Controller\Admin\Superadmin\SuperAdminController:deleteUser" type="service" id=".service_locator.hEwcf7A"/>
         <argument key="App\Controller\FrontController:newComment" type="service" id=".service_locator.TZbBIQs"/>
         <argument key="App\Controller\FrontController:searchResults" type="service" id=".service_locator.NIQ8BRW"/>
         <argument key="App\Controller\FrontController:toggleLikesAjax" type="service" id=".service_locator.TZbBIQs"/>
@@ -6429,12 +6445,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.IRqiCrm"/>
+      <argument type="service" id=".service_locator.0Z8XQNl"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.IRqiCrm"/>
+      <argument type="service" id=".service_locator.0Z8XQNl"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6447,6 +6463,7 @@
     <service id=".errored..service_locator.beq5mCo.Symfony\Component\HttpFoundation\Response" class="Symfony\Component\HttpFoundation\Response"/>
     <service id=".errored..service_locator.C9JCBPC.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
     <service id=".errored..service_locator.wNIwF8O.App\Entity\Category" class="App\Entity\Category"/>
+    <service id=".errored..service_locator.hEwcf7A.App\Entity\User" class="App\Entity\User"/>
     <service id=".errored..service_locator.TZbBIQs.App\Entity\Video" class="App\Entity\Video"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
@@ -6848,7 +6865,7 @@
     <service id="Knp\Bundle\TimeBundle\DateTimeFormatter" alias="time.datetime_formatter"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.IRqiCrm"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.0Z8XQNl"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
