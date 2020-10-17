@@ -11,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Subscription
 {
-    private static $planDataNames = ['free','pro','enterprise'];
-    private static $planDataPrices = [
+    public static $planDataNames = ['free','pro','enterprise'];
+    public static $planDataPrices = [
         'free'=>0,
         'pro'=>15,
         'enterprise'=>29,

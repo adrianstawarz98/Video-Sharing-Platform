@@ -15,6 +15,7 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/admin' => [[['_route' => 'admin_main_page', '_controller' => 'App\\Controller\\Admin\\MainController::index'], null, null, null, true, false, null]],
         '/admin/videos' => [[['_route' => 'videos', '_controller' => 'App\\Controller\\Admin\\MainController::videos'], null, null, null, false, false, null]],
+        '/admin/cancel-plan' => [[['_route' => 'cancel_plan', '_controller' => 'App\\Controller\\Admin\\MainController::cancelPlan'], null, null, null, false, false, null]],
         '/admin/su/categories' => [[['_route' => 'categories', '_controller' => 'App\\Controller\\Admin\\Superadmin\\CategoryController::categories'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/admin/su/upload-video' => [[['_route' => 'upload_video', '_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::uploadVideo'], null, null, null, false, false, null]],
         '/admin/su/users' => [[['_route' => 'users', '_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::users'], null, null, null, false, false, null]],

@@ -17,6 +17,7 @@ return [
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     'admin_main_page' => [[], ['_controller' => 'App\\Controller\\Admin\\MainController::index'], [], [['text', '/admin/']], [], []],
     'videos' => [[], ['_controller' => 'App\\Controller\\Admin\\MainController::videos'], [], [['text', '/admin/videos']], [], []],
+    'cancel_plan' => [[], ['_controller' => 'App\\Controller\\Admin\\MainController::cancelPlan'], [], [['text', '/admin/cancel-plan']], [], []],
     'categories' => [[], ['_controller' => 'App\\Controller\\Admin\\Superadmin\\CategoryController::categories'], [], [['text', '/admin/su/categories']], [], []],
     'edit_category' => [['id'], ['_controller' => 'App\\Controller\\Admin\\Superadmin\\CategoryController::editCategory'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/su/edit-category']], [], []],
     'delete_category' => [['id'], ['_controller' => 'App\\Controller\\Admin\\Superadmin\\CategoryController::deleteCategory'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/su/delete-category']], [], []],

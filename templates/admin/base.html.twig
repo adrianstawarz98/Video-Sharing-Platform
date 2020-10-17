@@ -41,6 +41,7 @@
                                 Videos
                             </a>
                         </li>
+                        {% if is_granted('ROLE_ADMIN') %}
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('upload_video')}}">
@@ -48,7 +49,6 @@
                                 Upload a video
                             </a>
                         </li>
-                        {% if is_granted('ROLE_ADMIN') %}
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{path('users')}}">
