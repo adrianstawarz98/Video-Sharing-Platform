@@ -69,5 +69,17 @@ class MainController extends AbstractController
         return $this->render('admin/_all_categories.html.twig',['categories'=>$categories,'editedCategory'=>$editedCategory]);
     }
 
+    /**
+     * @Route("/delete-account", name="delete_account")
+     */
+    public function deleteAccount()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->find($this->getUser());
+        $em->remove($user);
+        $em->flush();
+        session_destroy();
+       return $this->redirectToRoute('main_page');
+    }
 
 }
