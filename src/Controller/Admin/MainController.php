@@ -18,7 +18,7 @@ class MainController extends AbstractController
     public function index()
     {
         return $this->render('admin/my_profile.html.twig', [
-            'subscription' => $this->getUser()->getSubscription()
+            'subscription' => $this->getUser()->getSubscription(),
         ]);
     }
 

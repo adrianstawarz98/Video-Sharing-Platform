@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Video
 {
     public const VimeoPath = 'https://player.vimeo.com/video/';
-    public const VideoNotLoggedIn = '113716040';
+    public const VideoNotLoggedInOrNoMembers = 113716040;
     public const perPage=5;
     /**
      * @ORM\Id
@@ -101,12 +101,9 @@ class Video
     {
         return $this->path;
     }
-    public function getVimeoId($user): ?string
+    public function getVimeoId(): ?string
     {
-        if($user){
-            return $this->path;
-        }
-        else return self::VimeoPath.self::VideoNotLoggedIn;
+        return $this->path;
     }
     public function setPath(string $path): self
     {
