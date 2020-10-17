@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Video;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -42,18 +43,25 @@ class VideoRepository extends ServiceEntityRepository
     }
     private function prepareQuery(string $query): array
     {
-        return explode(' ',$query);
+        $terms = array_unique(explode(' ',$query));
+        return array_filter($terms, function ($term){
+            return 2 <= mb_strlen($term);
+        });
     }
     public function videoDetails($id)
     {
-       return $this->createQueryBuilder('v')
-           ->leftJoin('v.comments','c')
-           ->leftJoin('c.user', 'u')
-           ->addSelect('c','u')
-           ->where('v.id = :id')
-           ->setParameter('id',$id)
-           ->getQuery()
-           ->getOneOrNullResult();
+        try {
+            return $this->createQueryBuilder('v')
+                ->leftJoin('v.comments', 'c')
+                ->leftJoin('c.user', 'u')
+                ->addSelect('c', 'u')
+                ->where('v.id = :id')
+                ->setParameter('id', $id)
+                ->getQuery()
+                ->getOneOrNullResult();
+        } catch (NonUniqueResultException $e) {
+            return $e->getMessage();
+        }
     }
 // /**
     //  * @return Video[] Returns an array of Video objects

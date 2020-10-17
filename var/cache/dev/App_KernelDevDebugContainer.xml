@@ -359,6 +359,27 @@
         <argument type="service" id=".service_locator.g9CqTPp.App\Controller\AdminController"/>
       </call>
     </service>
+    <service id="App\Controller\Admin\MainController" class="App\Controller\Admin\MainController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Controller\Admin\MainController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Admin\Superadmin\CategoryController" class="App\Controller\Admin\Superadmin\CategoryController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Controller\Admin\Superadmin\CategoryController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Admin\Superadmin\SuperAdminController" class="App\Controller\Admin\Superadmin\SuperAdminController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Controller\Admin\Superadmin\SuperAdminController"/>
+      </call>
+    </service>
     <service id="App\Controller\FrontController" class="App\Controller\FrontController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -5486,6 +5507,15 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\MainController" class="App\Controller\Admin\MainController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\MainController" class="App\Controller\Admin\MainController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Admin\MainController" class="App\Controller\Admin\MainController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\Superadmin\CategoryController" class="App\Controller\Admin\Superadmin\CategoryController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\Superadmin\CategoryController" class="App\Controller\Admin\Superadmin\CategoryController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Admin\Superadmin\CategoryController" class="App\Controller\Admin\Superadmin\CategoryController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\Superadmin\SuperAdminController" class="App\Controller\Admin\Superadmin\SuperAdminController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\Superadmin\SuperAdminController" class="App\Controller\Admin\Superadmin\SuperAdminController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Admin\Superadmin\SuperAdminController" class="App\Controller\Admin\Superadmin\SuperAdminController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\FrontController" class="App\Controller\FrontController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\FrontController" class="App\Controller\FrontController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\FrontController" class="App\Controller\FrontController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5773,10 +5803,16 @@
         <argument key="loader" type="service" id=".errored..service_locator.C9JCBPC.Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
-    <service id=".service_locator.xaYlDwo" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.0XdlIh3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="adminList" type="service" id="App\Utils\CategoryTreeAdminList"/>
+        <argument key="categories" type="service" id="App\Utils\CategoryTreeAdminOptionList"/>
+      </argument>
+    </service>
+    <service id=".service_locator.jT4SQLC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="categories" type="service" id="App\Utils\CategoryTreeAdminList"/>
       </argument>
     </service>
     <service id=".service_locator.wNIwF8O" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5785,28 +5821,16 @@
         <argument key="category" type="service" id=".errored..service_locator.wNIwF8O.App\Entity\Category"/>
       </argument>
     </service>
-    <service id=".service_locator.0XdlIh3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="categories" type="service" id="App\Utils\CategoryTreeAdminOptionList"/>
-      </argument>
-    </service>
     <service id=".service_locator.ijavLg8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="categories" type="service" id="App\Utils\CategoryTreeFrontPage"/>
       </argument>
     </service>
-    <service id=".service_locator.XPb5eI7" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.YUE64IL" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="repository" type="service" id="App\Repository\VideoRepository"/>
-      </argument>
-    </service>
-    <service id=".service_locator.j5_bHjD" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="passwordEncoder" type="service" id="security.user_password_encoder.generic"/>
+        <argument key="repo" type="service" id="App\Repository\VideoRepository"/>
       </argument>
     </service>
     <service id=".service_locator.TZbBIQs" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5815,47 +5839,47 @@
         <argument key="video" type="service" id=".errored..service_locator.TZbBIQs.App\Entity\Video"/>
       </argument>
     </service>
-    <service id=".service_locator.Vc6vB.a" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.MrT.xrC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="comment" type="service" id=".errored..service_locator.Vc6vB.a.App\Entity\Comment"/>
+        <argument key="password_encoder" type="service" id="security.user_password_encoder.generic"/>
       </argument>
     </service>
-    <service id=".service_locator.xA8Fw_." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.ztsmAhC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
+        <argument key="helper" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.qHGy.Nj" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.sxAq6Yn" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\AdminController::categories" type="service" id=".service_locator.xaYlDwo"/>
-        <argument key="App\Controller\AdminController::deleteCategory" type="service" id=".service_locator.wNIwF8O"/>
-        <argument key="App\Controller\AdminController::editCategory" type="service" id=".service_locator.wNIwF8O"/>
-        <argument key="App\Controller\AdminController::getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
-        <argument key="App\Controller\FrontController::deleteComment" type="service" id=".service_locator.Vc6vB.a"/>
+        <argument key="App\Controller\Admin\MainController::getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
+        <argument key="App\Controller\Admin\Superadmin\CategoryController::categories" type="service" id=".service_locator.jT4SQLC"/>
+        <argument key="App\Controller\Admin\Superadmin\CategoryController::deleteCategory" type="service" id=".service_locator.wNIwF8O"/>
+        <argument key="App\Controller\Admin\Superadmin\CategoryController::editCategory" type="service" id=".service_locator.wNIwF8O"/>
         <argument key="App\Controller\FrontController::newComment" type="service" id=".service_locator.TZbBIQs"/>
-        <argument key="App\Controller\FrontController::register" type="service" id=".service_locator.j5_bHjD"/>
-        <argument key="App\Controller\FrontController::videoDetails" type="service" id=".service_locator.XPb5eI7"/>
+        <argument key="App\Controller\FrontController::toggleLikesAjax" type="service" id=".service_locator.TZbBIQs"/>
+        <argument key="App\Controller\FrontController::videoDetails" type="service" id=".service_locator.YUE64IL"/>
         <argument key="App\Controller\FrontController::videoList" type="service" id=".service_locator.ijavLg8"/>
-        <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.xA8Fw_."/>
+        <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.ztsmAhC"/>
+        <argument key="App\Controller\SecurityController::register" type="service" id=".service_locator.MrT.xrC"/>
         <argument key="App\Kernel::loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="App\Kernel::terminate" type="service" id=".service_locator.beq5mCo"/>
         <argument key="kernel::loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel::registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel::terminate" type="service" id=".service_locator.beq5mCo"/>
-        <argument key="App\Controller\AdminController:categories" type="service" id=".service_locator.xaYlDwo"/>
-        <argument key="App\Controller\AdminController:deleteCategory" type="service" id=".service_locator.wNIwF8O"/>
-        <argument key="App\Controller\AdminController:editCategory" type="service" id=".service_locator.wNIwF8O"/>
-        <argument key="App\Controller\AdminController:getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
-        <argument key="App\Controller\FrontController:deleteComment" type="service" id=".service_locator.Vc6vB.a"/>
+        <argument key="App\Controller\Admin\MainController:getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
+        <argument key="App\Controller\Admin\Superadmin\CategoryController:categories" type="service" id=".service_locator.jT4SQLC"/>
+        <argument key="App\Controller\Admin\Superadmin\CategoryController:deleteCategory" type="service" id=".service_locator.wNIwF8O"/>
+        <argument key="App\Controller\Admin\Superadmin\CategoryController:editCategory" type="service" id=".service_locator.wNIwF8O"/>
         <argument key="App\Controller\FrontController:newComment" type="service" id=".service_locator.TZbBIQs"/>
-        <argument key="App\Controller\FrontController:register" type="service" id=".service_locator.j5_bHjD"/>
-        <argument key="App\Controller\FrontController:videoDetails" type="service" id=".service_locator.XPb5eI7"/>
+        <argument key="App\Controller\FrontController:toggleLikesAjax" type="service" id=".service_locator.TZbBIQs"/>
+        <argument key="App\Controller\FrontController:videoDetails" type="service" id=".service_locator.YUE64IL"/>
         <argument key="App\Controller\FrontController:videoList" type="service" id=".service_locator.ijavLg8"/>
-        <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.xA8Fw_."/>
+        <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.ztsmAhC"/>
+        <argument key="App\Controller\SecurityController:register" type="service" id=".service_locator.MrT.xrC"/>
         <argument key="kernel:loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel:registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel:terminate" type="service" id=".service_locator.beq5mCo"/>
@@ -6160,6 +6184,24 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.g9CqTPp" method="withContext"/>
     </service>
+    <service id=".service_locator.g9CqTPp.App\Controller\Admin\MainController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\Admin\MainController"/>
+      <argument>App\Controller\Admin\MainController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
+    <service id=".service_locator.g9CqTPp.App\Controller\Admin\Superadmin\CategoryController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\Admin\Superadmin\CategoryController"/>
+      <argument>App\Controller\Admin\Superadmin\CategoryController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
+    <service id=".service_locator.g9CqTPp.App\Controller\Admin\Superadmin\SuperAdminController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\Admin\Superadmin\SuperAdminController"/>
+      <argument>App\Controller\Admin\Superadmin\SuperAdminController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
     <service id=".service_locator.g9CqTPp.App\Controller\FrontController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\FrontController"/>
       <argument>App\Controller\FrontController</argument>
@@ -6333,12 +6375,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.qHGy.Nj"/>
+      <argument type="service" id=".service_locator.sxAq6Yn"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.qHGy.Nj"/>
+      <argument type="service" id=".service_locator.sxAq6Yn"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6352,7 +6394,6 @@
     <service id=".errored..service_locator.C9JCBPC.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
     <service id=".errored..service_locator.wNIwF8O.App\Entity\Category" class="App\Entity\Category"/>
     <service id=".errored..service_locator.TZbBIQs.App\Entity\Video" class="App\Entity\Video"/>
-    <service id=".errored..service_locator.Vc6vB.a.App\Entity\Comment" class="App\Entity\Comment"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
       <argument type="service" id=".service_locator.y52Hdkq"/>
@@ -6753,7 +6794,7 @@
     <service id="Knp\Bundle\TimeBundle\DateTimeFormatter" alias="time.datetime_formatter"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.qHGy.Nj"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.sxAq6Yn"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

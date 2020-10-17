@@ -1,78 +1,106 @@
 <?php
-
+/*
+|--------------------------------------------------------
+| copyright netprogs.pl | available only at Udemy.com | further distribution is prohibited  ***
+|--------------------------------------------------------
+*/
 namespace App\Controller;
 
-use App\Entity\Comment;
-use App\Entity\User;
-use App\Form\UserType;
-use App\Repository\VideoRepository;
-use App\Utils\CategoryTreeFrontPage;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Category;
 use App\Entity\Video;
+use App\Repository\VideoRepository;
+use App\Utils\CategoryTreeFrontPage;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
+use App\Entity\Comment;
+use App\Controller\Traits\Likes;
 class FrontController extends AbstractController
 {
+    use Likes;
     /**
      * @Route("/", name="main_page")
      */
     public function index()
     {
-
         return $this->render('front/index.html.twig');
     }
 
     /**
-     * @Route("/video-list/{category}/{id}/{page}", defaults={ "page":"1" },name="video_list")
+     * @Route("/video-list/category/{categoryname},{id}/{page}", defaults={"page": "1"}, name="video_list")
      */
-    public function videoList($id, $page,CategoryTreeFrontPage $categories, Request $request)
+    public function videoList($id, $page, CategoryTreeFrontPage $categories, Request $request)
     {
+        $ids = $categories->getChildIds($id);
+        array_push($ids, $id);
 
+        $videos = $this->getDoctrine()
+        ->getRepository(Video::class)
+        ->findByChildIds($ids ,$page, $request->get('sortby'));
 
         $categories->getCategoryListAndParent($id);
-        $ids = $categories ->getChildIds($id);
-        $ids[] = $id;
-
-
-
-        $videos = $this->getDoctrine()->getRepository(Video::class)->findByChildIds($ids, $page, $request->get('sortby'));
-        return $this->render('front/video_list.html.twig', [
-            'subcategories' => $categories ,
-            'videos' => $videos,
+        return $this->render('front/video_list.html.twig',[
+            'subcategories' => $categories,
+            'videos'=>$videos
         ]);
     }
 
     /**
      * @Route("/video-details/{video}", name="video_details")
      */
-    public function videoDetails($video, VideoRepository $repository)
+    public function videoDetails(VideoRepository $repo, $video)
     {
-        $videos = $repository->videoDetails($video);
-        return $this->render('front/video_details.html.twig',[
-            'video' => $videos
+        return $this->render('front/video_details.html.twig',
+        [
+            'video'=>$repo->videoDetails($video),
         ]);
     }
 
     /**
-     * @Route("/search-results/{page}", methods={"GET"}, defaults={"page" = "1"},name="search_results")
+     * @Route("/new-comment/{video}", methods={"POST"}, name="new_comment")
+    */
+    public function newComment(Video $video, Request $request )
+     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+        
+        if ( !empty( trim($request->request->get('comment')) ) ) 
+        {   
+
+            // $video = $this->getDoctrine()->getRepository(Video::class)->find($video_id);
+        
+            $comment = new Comment();
+            $comment->setContent($request->request->get('comment'));
+            $comment->setUser($this->getUser());
+            $comment->setVideo($video);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+        }
+        
+        return $this->redirectToRoute('video_details',['video'=>$video->getId()]);
+     }
+
+    /**
+     * @Route("/search-results/{page}", methods={"GET"}, defaults={"page": "1"}, name="search_results")
      */
     public function searchResults($page, Request $request)
     {
         $videos = null;
         $query = null;
-        if ($query = $request->get('query'))
+
+        if($query = $request->get('query'))
         {
-           $videos = $this->getDoctrine()->getRepository(Video::class)->findByTitle($query,$page,$request->get('sortby'));
+            $videos = $this->getDoctrine()
+            ->getRepository(Video::class)
+            ->findByTitle($query, $page, $request->get('sortby'));
+
             if(!$videos->getItems()) $videos = null;
         }
+       
         return $this->render('front/search_results.html.twig',[
             'videos' => $videos,
-            'query' => $query
+            'query' => $query,
         ]);
     }
 
@@ -85,42 +113,6 @@ class FrontController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="register", methods={"POST", "GET"})
-     */
-    public function register(Request $request,UserPasswordEncoderInterface $passwordEncoder)
-    {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid())
-        {
-            $manager = $this->getDoctrine()->getManager();
-            $user->setName($request->get('user')['name']);
-            $user->setLastname($request->get('user')['last_name']);
-            $user->setEmail($request->get('user')['email']);
-            $password = $passwordEncoder->encodePassword($user,$request->get('user')['password']['first']);
-            $user->setPassword($password);
-            $user ->setRoles(['ROLE_USER']);
-            $manager->persist($user);
-            $manager->flush();
-            $this->loginUserAutomatically($user,$password);
-            return $this->redirectToRoute('admin_main_page');
-
-        }
-        return $this->render('front/register.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
-
-    /**
-     * @Route("/login", name="login")
-     */
-    public function login()
-    {
-        return $this->render('front/login.html.twig');
-    }
-
-    /**
      * @Route("/payment", name="payment")
      */
     public function payment()
@@ -130,45 +122,47 @@ class FrontController extends AbstractController
 
     public function mainCategories()
     {
-
-        $categories = $this->getDoctrine()->getRepository(Category::class)->findBy(['parent' => null], ['name' => 'ASC']);
-        return $this->render('front/_main_categories.html.twig', [
-            'categories' => $categories
+        $categories = $this->getDoctrine()
+        ->getRepository(Category::class)
+        ->findBy(['parent'=>null], ['name'=>'ASC']);
+        return $this->render('front/_main_categories.html.twig',[
+            'categories'=>$categories
         ]);
     }
-    private function loginUserAutomatically($user, $password): void
-    {
-    $token = new UsernamePasswordToken($user,$password,'main',$user->getRoles());
-    $this->get('security.token_storage')->setToken($token);
-    $this->get('session')->set('_security_main',serialize($token));
-    }
-    /**
-     * @Route("/new-comment/{video}", name="new_comment", methods={"POST"})
+
+
+        /**
+     * @Route("/video-list/{video}/like", name="like_video", methods={"POST"})
+     * @Route("/video-list/{video}/dislike", name="dislike_video", methods={"POST"})
+     * @Route("/video-list/{video}/unlike", name="undo_like_video", methods={"POST"})
+     * @Route("/video-list/{video}/undodislike", name="undo_dislike_video", methods={"POST"})
      */
-    public function newComment(Video $video, Request $request)
+    public function toggleLikesAjax(Video $video, Request $request)
     {
+        
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
-        if(!empty(trim($request->get('comment')))){
-            $comment = new Comment();
-            $comment->setContent($request->get('comment'));
-            $comment->setUser($this->getUser());
-            $comment->setVideo($video);
-            $em=$this->getDoctrine()->getManager();
-            $em->persist($comment);
+
+        switch($request->get('_route'))
+        {
+            case 'like_video':
+            $result = $this->likeVideo($video);
+            break;
+            
+            case 'dislike_video':
+            $result = $this->dislikeVideo($video);
+            break;
+
+            case 'undo_like_video':
+            $result = $this->undoLikeVideo($video);
+            break;
+
+            case 'undo_dislike_video':
+            $result = $this->undoDislikeVideo($video);
+            break;
         }
-        $em->flush();
-        return $this->redirectToRoute('video_details', ['video'=>$video->getId()]);
+
+        return $this->json(['action' => $result,'id'=>$video->getId()]);
     }
-    /**
-     * @Route("/delete-comment/{comment}", name="delete_comment")
-     * @Security("user.getId() == comment.getUser().getId()")
-     */
-    public function deleteComment(Comment $comment, Request $request)
-    {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
-            $em=$this->getDoctrine()->getManager();
-            $em->remove($comment);
-        $em->flush();
-        return $this->redirect($request->headers->get('referer'));
-    }
+
 }
+
