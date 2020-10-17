@@ -28,7 +28,6 @@ return [
     'video_details' => [['video'], ['_controller' => 'App\\Controller\\FrontController::videoDetails'], [], [['variable', '/', '[^/]++', 'video', true], ['text', '/video-details']], [], []],
     'new_comment' => [['video'], ['_controller' => 'App\\Controller\\FrontController::newComment'], [], [['variable', '/', '[^/]++', 'video', true], ['text', '/new-comment']], [], []],
     'search_results' => [['page'], ['page' => '1', '_controller' => 'App\\Controller\\FrontController::searchResults'], [], [['variable', '/', '[^/]++', 'page', true], ['text', '/search-results']], [], []],
-    'payment' => [[], ['_controller' => 'App\\Controller\\FrontController::payment'], [], [['text', '/payment']], [], []],
     'like_video' => [['video'], ['_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], [], [['text', '/like'], ['variable', '/', '[^/]++', 'video', true], ['text', '/video-list']], [], []],
     'dislike_video' => [['video'], ['_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], [], [['text', '/dislike'], ['variable', '/', '[^/]++', 'video', true], ['text', '/video-list']], [], []],
     'undo_like_video' => [['video'], ['_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], [], [['text', '/unlike'], ['variable', '/', '[^/]++', 'video', true], ['text', '/video-list']], [], []],
@@ -37,4 +36,5 @@ return [
     'login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
     'logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
     'pricing' => [[], ['_controller' => 'App\\Controller\\SubscriptionController::pricing'], [], [['text', '/pricing']], [], []],
+    'payment' => [['paypal'], ['paypal' => false, '_controller' => 'App\\Controller\\SubscriptionController::payment'], [], [['variable', '/', '[^/]++', 'paypal', true], ['text', '/payment']], [], []],
 ];

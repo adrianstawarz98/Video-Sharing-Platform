@@ -35,7 +35,8 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity=Video::class, inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false, name="video_id")
+     * @ORM\JoinColumn(nullable=false, name="video_id",
+     * referencedColumnName="id", onDelete="CASCADE")
      */
     private $video;
 

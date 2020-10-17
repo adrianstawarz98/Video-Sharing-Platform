@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
+use App\Controller\Traits\SaveSubscription;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Entity\Subscription;
 class SubscriptionController extends AbstractController
 {
+    use SaveSubscription;
     /**
  * @Route("/pricing", name="pricing")
  */
@@ -18,4 +20,18 @@ class SubscriptionController extends AbstractController
             'price' => Subscription::getPlanDataPrices()
         ]);
     }
+    /**
+     * @Route("/payment/{paypal}", name="payment", defaults={"paypal":false})
+     */
+    public function payment($paypal, SessionInterface $session)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+        if($paypal)
+        {
+            $this->saveSubscription($session->get('planName'), $this->getUser());
+            return $this->redirectToRoute('admin_main_page');
+        }
+        return $this->render('front/payment.html.twig');
+    }
+
 }
