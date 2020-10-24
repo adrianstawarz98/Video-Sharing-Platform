@@ -18,7 +18,7 @@ return [
         '/admin/cancel-plan' => [[['_route' => 'cancel_plan', '_controller' => 'App\\Controller\\Admin\\MainController::cancelPlan'], null, null, null, false, false, null]],
         '/admin/delete-account' => [[['_route' => 'delete_account', '_controller' => 'App\\Controller\\Admin\\MainController::deleteAccount'], null, null, null, false, false, null]],
         '/admin/su/categories' => [[['_route' => 'categories', '_controller' => 'App\\Controller\\Admin\\Superadmin\\CategoryController::categories'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        '/admin/su/upload-video-locally' => [[['_route' => 'upload_video', '_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::uploadVideo'], null, null, null, false, false, null]],
+        '/admin/su/upload-video-locally' => [[['_route' => 'upload_video_locally', '_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::uploadVideoLocally'], null, null, null, false, false, null]],
         '/admin/su/users' => [[['_route' => 'users', '_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::users'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'main_page', '_controller' => 'App\\Controller\\FrontController::index'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
@@ -46,27 +46,28 @@ return [
                     .'|edit\\-category/([^/]++)(*:205)'
                     .'|delete\\-(?'
                         .'|category/([^/]++)(*:241)'
-                        .'|user/([^/]++)(*:262)'
+                        .'|video/([^/]++)/(.+)(*:268)'
+                        .'|user/([^/]++)(*:289)'
                     .')'
                 .')'
                 .'|/video\\-(?'
                     .'|list/(?'
-                        .'|category/([^/,]++),([^/]++)(?:/([^/]++))?(*:332)'
+                        .'|category/([^/,]++),([^/]++)(?:/([^/]++))?(*:359)'
                         .'|([^/]++)/(?'
-                            .'|like(*:356)'
-                            .'|dislike(*:371)'
+                            .'|like(*:383)'
+                            .'|dislike(*:398)'
                             .'|un(?'
-                                .'|like(*:388)'
-                                .'|dodislike(*:405)'
+                                .'|like(*:415)'
+                                .'|dodislike(*:432)'
                             .')'
                         .')'
                     .')'
-                    .'|details/([^/]++)(*:432)'
+                    .'|details/([^/]++)(*:459)'
                 .')'
-                .'|/new\\-comment/([^/]++)(*:463)'
-                .'|/search\\-results(?:/([^/]++))?(*:501)'
-                .'|/register/([^/]++)(*:527)'
-                .'|/payment(?:/([^/]++))?(*:557)'
+                .'|/new\\-comment/([^/]++)(*:490)'
+                .'|/search\\-results(?:/([^/]++))?(*:528)'
+                .'|/register/([^/]++)(*:554)'
+                .'|/payment(?:/([^/]++))?(*:584)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -79,17 +80,18 @@ return [
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         205 => [[['_route' => 'edit_category', '_controller' => 'App\\Controller\\Admin\\Superadmin\\CategoryController::editCategory'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
         241 => [[['_route' => 'delete_category', '_controller' => 'App\\Controller\\Admin\\Superadmin\\CategoryController::deleteCategory'], ['id'], null, null, false, true, null]],
-        262 => [[['_route' => 'delete_user', '_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::deleteUser'], ['user'], null, null, false, true, null]],
-        332 => [[['_route' => 'video_list', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::videoList'], ['categoryname', 'id', 'page'], null, null, false, true, null]],
-        356 => [[['_route' => 'like_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
-        371 => [[['_route' => 'dislike_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
-        388 => [[['_route' => 'undo_like_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
-        405 => [[['_route' => 'undo_dislike_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
-        432 => [[['_route' => 'video_details', '_controller' => 'App\\Controller\\FrontController::videoDetails'], ['video'], null, null, false, true, null]],
-        463 => [[['_route' => 'new_comment', '_controller' => 'App\\Controller\\FrontController::newComment'], ['video'], ['POST' => 0], null, false, true, null]],
-        501 => [[['_route' => 'search_results', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::searchResults'], ['page'], ['GET' => 0], null, false, true, null]],
-        527 => [[['_route' => 'register', '_controller' => 'App\\Controller\\SecurityController::register'], ['plan'], null, null, false, true, null]],
-        557 => [
+        268 => [[['_route' => 'delete_video', '_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::deleteVideo'], ['video', 'path'], null, null, false, true, null]],
+        289 => [[['_route' => 'delete_user', '_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::deleteUser'], ['user'], null, null, false, true, null]],
+        359 => [[['_route' => 'video_list', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::videoList'], ['categoryname', 'id', 'page'], null, null, false, true, null]],
+        383 => [[['_route' => 'like_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
+        398 => [[['_route' => 'dislike_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
+        415 => [[['_route' => 'undo_like_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
+        432 => [[['_route' => 'undo_dislike_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
+        459 => [[['_route' => 'video_details', '_controller' => 'App\\Controller\\FrontController::videoDetails'], ['video'], null, null, false, true, null]],
+        490 => [[['_route' => 'new_comment', '_controller' => 'App\\Controller\\FrontController::newComment'], ['video'], ['POST' => 0], null, false, true, null]],
+        528 => [[['_route' => 'search_results', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::searchResults'], ['page'], ['GET' => 0], null, false, true, null]],
+        554 => [[['_route' => 'register', '_controller' => 'App\\Controller\\SecurityController::register'], ['plan'], null, null, false, true, null]],
+        584 => [
             [['_route' => 'payment', 'paypal' => false, '_controller' => 'App\\Controller\\SubscriptionController::payment'], ['paypal'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

@@ -23,11 +23,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54e99f70-da0a-4c03-b0e8-7181e77490b7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/config/packages/dev/twig.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/prod/twig.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Utils/Interfaces/UploadInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Utils/LocalUploader.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201017194126.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Admin/Superadmin/SuperAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/Superadmin/SuperAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Video.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Video.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/upload_video.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/upload_video_locally.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/my_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/my_profile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/videos.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/videos.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainerCompiler.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainerCompiler.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/url_generating_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/url_generating_routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/url_generating_routes.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/url_generating_routes.php.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/url_matching_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/url_matching_routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/url_matching_routes.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/url_matching_routes.php.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -258,7 +275,10 @@
       <workItem from="1602847755467" duration="1916000" />
       <workItem from="1602930942616" duration="25051000" />
       <workItem from="1603006850566" duration="1291000" />
-      <workItem from="1603128517912" duration="3150000" />
+      <workItem from="1603128517912" duration="3866000" />
+      <workItem from="1603185011601" duration="1199000" />
+      <workItem from="1603454109816" duration="596000" />
+      <workItem from="1603552562242" duration="8293000" />
     </task>
     <servers />
   </component>
@@ -298,6 +318,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="274" y="0" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1601892215148" />
+    <state x="777" y="160" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603569718370">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="777" y="160" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1603569718370" />
     <state x="488" y="43" key="#com.intellij.ide.util.MemberChooser" timestamp="1601314231713">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -330,14 +354,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="97" key="IDE.errors.dialog/0.0.1366.728@0.0.1366.728" timestamp="1600966711401" />
-    <state x="437" y="64" key="NewPhpClassDialog" timestamp="1602946930564">
+    <state x="437" y="64" key="NewPhpClassDialog" timestamp="1603566291764">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="437" y="64" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1602946930564" />
-    <state x="518" y="282" key="NewPhpFileDialog" timestamp="1602961368446">
+    <state x="437" y="64" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1603566291764" />
+    <state x="518" y="282" key="NewPhpFileDialog" timestamp="1603566128133">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="518" y="282" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1602961368446" />
+    <state x="518" y="282" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1603566128133" />
     <state x="358" y="0" key="SettingsEditor" timestamp="1601892059398">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -354,10 +378,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="452" y="155" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1366.728@0.0.1366.728" timestamp="1600966349408" />
-    <state x="390" y="0" width="668" height="728" key="find.popup" timestamp="1602931120162">
+    <state x="390" y="0" width="668" height="728" key="find.popup" timestamp="1603577744203">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="390" y="0" width="668" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1602931120162" />
+    <state x="390" y="0" width="668" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1603577744203" />
     <state x="61" y="130" key="refactoring.ChangeSignatureDialog" timestamp="1602534055139">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -366,9 +390,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1601314280687" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1603132087645">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1603577794300">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1603132087645" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1603577794300" />
   </component>
 </project>

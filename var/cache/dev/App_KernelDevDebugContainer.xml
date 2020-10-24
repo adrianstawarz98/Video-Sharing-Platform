@@ -87,6 +87,8 @@
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
+    <parameter key="locale">en</parameter>
+    <parameter key="videos_directory">E:\Video-Sharing-Platform/public/uploads/videos</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -352,13 +354,6 @@
       <tag name="controller.service_arguments"/>
       <tag name="routing.route_loader"/>
     </service>
-    <service id="App\Controller\AdminController" class="App\Controller\AdminController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.g9CqTPp.App\Controller\AdminController"/>
-      </call>
-    </service>
     <service id="App\Controller\Admin\MainController" class="App\Controller\Admin\MainController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -477,6 +472,9 @@
     <service id="App\Utils\CategoryTreeFrontPage" class="App\Utils\CategoryTreeFrontPage" autowire="true" autoconfigure="true">
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
       <argument type="service" id="router.default"/>
+    </service>
+    <service id="App\Utils\LocalUploader" class="App\Utils\LocalUploader" autowire="true" autoconfigure="true">
+      <argument>E:\Video-Sharing-Platform/public/uploads/videos</argument>
     </service>
     <service id="App\Utils\VideoForNoValidSubscription" class="App\Utils\VideoForNoValidSubscription" autowire="true" autoconfigure="true">
       <argument type="service" id="security.helper"/>
@@ -3470,6 +3468,10 @@
       <call method="addRuntimeLoader">
         <argument type="service" id="twig.runtime_loader"/>
       </call>
+      <call method="addGlobal">
+        <argument>upload_route_name</argument>
+        <argument>upload_video_locally</argument>
+      </call>
       <call method="registerUndefinedFilterCallback">
         <argument type="collection">
           <argument type="service" id="twig.missing_extension_suggestor"/>
@@ -5529,9 +5531,6 @@
       <tag name="twig.extension"/>
       <argument type="service" id="time.datetime_formatter"/>
     </service>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\MainController" class="App\Controller\Admin\MainController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\MainController" class="App\Controller\Admin\MainController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Admin\MainController" class="App\Controller\Admin\MainController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5861,6 +5860,19 @@
         <argument key="category" type="service" id=".errored..service_locator.wNIwF8O.App\Entity\Category"/>
       </argument>
     </service>
+    <service id=".service_locator.iX6QLvK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="fileUploader" type="service" id="App\Utils\LocalUploader"/>
+      </argument>
+    </service>
+    <service id=".service_locator.kSX4LBZ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="fileUploader" type="service" id="App\Utils\LocalUploader"/>
+        <argument key="video" type="service" id=".errored..service_locator.kSX4LBZ.App\Entity\Video"/>
+      </argument>
+    </service>
     <service id=".service_locator.hEwcf7A" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5912,7 +5924,7 @@
         <argument key="session" type="service" id="session"/>
       </argument>
     </service>
-    <service id=".service_locator.0Z8XQNl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.OsMYN._" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\Admin\MainController::getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
@@ -5921,6 +5933,8 @@
         <argument key="App\Controller\Admin\Superadmin\CategoryController::deleteCategory" type="service" id=".service_locator.wNIwF8O"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController::editCategory" type="service" id=".service_locator.wNIwF8O"/>
         <argument key="App\Controller\Admin\Superadmin\SuperAdminController::deleteUser" type="service" id=".service_locator.hEwcf7A"/>
+        <argument key="App\Controller\Admin\Superadmin\SuperAdminController::deleteVideo" type="service" id=".service_locator.kSX4LBZ"/>
+        <argument key="App\Controller\Admin\Superadmin\SuperAdminController::uploadVideoLocally" type="service" id=".service_locator.iX6QLvK"/>
         <argument key="App\Controller\FrontController::newComment" type="service" id=".service_locator.TZbBIQs"/>
         <argument key="App\Controller\FrontController::searchResults" type="service" id=".service_locator.NIQ8BRW"/>
         <argument key="App\Controller\FrontController::toggleLikesAjax" type="service" id=".service_locator.TZbBIQs"/>
@@ -5941,6 +5955,8 @@
         <argument key="App\Controller\Admin\Superadmin\CategoryController:deleteCategory" type="service" id=".service_locator.wNIwF8O"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController:editCategory" type="service" id=".service_locator.wNIwF8O"/>
         <argument key="App\Controller\Admin\Superadmin\SuperAdminController:deleteUser" type="service" id=".service_locator.hEwcf7A"/>
+        <argument key="App\Controller\Admin\Superadmin\SuperAdminController:deleteVideo" type="service" id=".service_locator.kSX4LBZ"/>
+        <argument key="App\Controller\Admin\Superadmin\SuperAdminController:uploadVideoLocally" type="service" id=".service_locator.iX6QLvK"/>
         <argument key="App\Controller\FrontController:newComment" type="service" id=".service_locator.TZbBIQs"/>
         <argument key="App\Controller\FrontController:searchResults" type="service" id=".service_locator.NIQ8BRW"/>
         <argument key="App\Controller\FrontController:toggleLikesAjax" type="service" id=".service_locator.TZbBIQs"/>
@@ -6249,12 +6265,6 @@
         <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
-    <service id=".service_locator.g9CqTPp.App\Controller\AdminController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\AdminController"/>
-      <argument>App\Controller\AdminController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.g9CqTPp" method="withContext"/>
-    </service>
     <service id=".service_locator.g9CqTPp.App\Controller\Admin\MainController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\Admin\MainController"/>
       <argument>App\Controller\Admin\MainController</argument>
@@ -6452,12 +6462,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.0Z8XQNl"/>
+      <argument type="service" id=".service_locator.OsMYN._"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.0Z8XQNl"/>
+      <argument type="service" id=".service_locator.OsMYN._"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6470,6 +6480,7 @@
     <service id=".errored..service_locator.beq5mCo.Symfony\Component\HttpFoundation\Response" class="Symfony\Component\HttpFoundation\Response"/>
     <service id=".errored..service_locator.C9JCBPC.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
     <service id=".errored..service_locator.wNIwF8O.App\Entity\Category" class="App\Entity\Category"/>
+    <service id=".errored..service_locator.kSX4LBZ.App\Entity\Video" class="App\Entity\Video"/>
     <service id=".errored..service_locator.hEwcf7A.App\Entity\User" class="App\Entity\User"/>
     <service id=".errored..service_locator.TZbBIQs.App\Entity\Video" class="App\Entity\Video"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
@@ -6739,6 +6750,7 @@
     <service id="Symfony\Component\DependencyInjection\ContainerInterface" alias="service_container" public="false">
       <deprecated package="symfony/dependency-injection" version="5.1">The "%alias_id%" autowiring alias is deprecated. Define it explicitly in your app if you want to keep using it.</deprecated>
     </service>
+    <service id="App\Utils\Interfaces\UploadInterface" alias="App\Utils\LocalUploader" public="false"/>
     <service id="App\Kernel" alias="kernel" public="true"/>
     <service id="Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface" alias="parameter_bag" public="false"/>
     <service id="Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface" alias="parameter_bag" public="false"/>
@@ -6872,7 +6884,7 @@
     <service id="Knp\Bundle\TimeBundle\DateTimeFormatter" alias="time.datetime_formatter"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.0Z8XQNl"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.OsMYN._"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
