@@ -23,28 +23,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54e99f70-da0a-4c03-b0e8-7181e77490b7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/packages/dev/twig.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/packages/prod/twig.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/Interfaces/UploadInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/LocalUploader.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201017194126.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/Superadmin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/Superadmin/CategoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Admin/Superadmin/SuperAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/Superadmin/SuperAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/my_profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/my_profile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/FrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FrontController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/categories.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/categories.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/edit_category.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/edit_category.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/videos.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/videos.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/login.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.xml.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainerCompiler.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainerCompiler.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/url_generating_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/url_generating_routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/url_generating_routes.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/url_generating_routes.php.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/url_matching_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/url_matching_routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/url_matching_routes.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/url_matching_routes.php.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -278,7 +273,9 @@
       <workItem from="1603128517912" duration="3866000" />
       <workItem from="1603185011601" duration="1199000" />
       <workItem from="1603454109816" duration="596000" />
-      <workItem from="1603552562242" duration="8293000" />
+      <workItem from="1603552562242" duration="8390000" />
+      <workItem from="1603619361876" duration="2394000" />
+      <workItem from="1603627461333" duration="1959000" />
     </task>
     <servers />
   </component>
@@ -378,10 +375,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="452" y="155" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1366.728@0.0.1366.728" timestamp="1600966349408" />
-    <state x="390" y="0" width="668" height="728" key="find.popup" timestamp="1603577744203">
+    <state x="390" y="0" width="668" height="728" key="find.popup" timestamp="1603630583320">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="390" y="0" width="668" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1603577744203" />
+    <state x="390" y="0" width="668" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1603630583320" />
     <state x="61" y="130" key="refactoring.ChangeSignatureDialog" timestamp="1602534055139">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -390,9 +387,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1601314280687" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1603577794300">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1603631121498">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1603577794300" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1603631121498" />
   </component>
 </project>

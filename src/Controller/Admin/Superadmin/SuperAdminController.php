@@ -6,6 +6,7 @@
 */
 namespace App\Controller\Admin\Superadmin;
 
+use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -106,6 +107,19 @@ class SuperAdminController extends AbstractController
         $manager->flush();
 
         return $this->redirectToRoute('users');
+    }
+
+    /**
+     * @Route("/update-video-category/{video}", name="update_video_category", methods={"POST"})
+     */
+    public function updateVideoCategory(Video $video, Request $request)
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $category = $this->getDoctrine()->getRepository(Category::class)->find($request->get('video_category'));
+        $video->setCategory($category);
+        $manager->persist($video);
+        $manager->flush();
+        return $this->redirectToRoute('videos');
     }
 
 

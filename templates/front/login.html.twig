@@ -8,12 +8,7 @@
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
-    {% if app.user %}
-        <div class="h3 mb-3 font-weight-normal text-primary">
-            You are logged in as {{ app.user.username }} <br><a href="{{ path('logout') }}">Logout</a>
-        </div>
-    {% endif %}
-{% if not app.user %}
+
 
 	<form method="POST" action="{{path('login')}}" class="form-signin">
 		<h1 class="h3 mb-3 font-weight-normal ">Please sign in</h1>
@@ -31,7 +26,7 @@
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 		
 	</form>
-    {% endif %}
+
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2018
 	<a href="{{path('main_page')}}">Main Page</a>
 	</p>

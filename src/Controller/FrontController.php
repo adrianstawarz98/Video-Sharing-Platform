@@ -155,5 +155,6 @@ class FrontController extends AbstractController
         return $this->json(['action' => $result,'id'=>$video->getId()]);
     }
 
+
 }
 

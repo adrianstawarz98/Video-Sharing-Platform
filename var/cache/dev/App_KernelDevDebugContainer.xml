@@ -5879,6 +5879,12 @@
         <argument key="user" type="service" id=".errored..service_locator.hEwcf7A.App\Entity\User"/>
       </argument>
     </service>
+    <service id=".service_locator.TZbBIQs" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="video" type="service" id=".errored..service_locator.TZbBIQs.App\Entity\Video"/>
+      </argument>
+    </service>
     <service id=".service_locator.A9cm4k6" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5891,12 +5897,6 @@
       <argument type="collection">
         <argument key="repo" type="service" id="App\Repository\VideoRepository"/>
         <argument key="video_no_members" type="service" id="App\Utils\VideoForNoValidSubscription"/>
-      </argument>
-    </service>
-    <service id=".service_locator.TZbBIQs" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="video" type="service" id=".errored..service_locator.TZbBIQs.App\Entity\Video"/>
       </argument>
     </service>
     <service id=".service_locator.NIQ8BRW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5924,16 +5924,18 @@
         <argument key="session" type="service" id="session"/>
       </argument>
     </service>
-    <service id=".service_locator.OsMYN._" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.COVooun" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\Admin\MainController::getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
         <argument key="App\Controller\Admin\MainController::index" type="service" id=".service_locator.MrT.xrC"/>
+        <argument key="App\Controller\Admin\MainController::videos" type="service" id=".service_locator.0XdlIh3"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController::categories" type="service" id=".service_locator.jT4SQLC"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController::deleteCategory" type="service" id=".service_locator.wNIwF8O"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController::editCategory" type="service" id=".service_locator.wNIwF8O"/>
+        <argument key="App\Controller\Admin\Superadmin\CategoryController::getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
         <argument key="App\Controller\Admin\Superadmin\SuperAdminController::deleteUser" type="service" id=".service_locator.hEwcf7A"/>
         <argument key="App\Controller\Admin\Superadmin\SuperAdminController::deleteVideo" type="service" id=".service_locator.kSX4LBZ"/>
+        <argument key="App\Controller\Admin\Superadmin\SuperAdminController::updateVideoCategory" type="service" id=".service_locator.TZbBIQs"/>
         <argument key="App\Controller\Admin\Superadmin\SuperAdminController::uploadVideoLocally" type="service" id=".service_locator.iX6QLvK"/>
         <argument key="App\Controller\FrontController::newComment" type="service" id=".service_locator.TZbBIQs"/>
         <argument key="App\Controller\FrontController::searchResults" type="service" id=".service_locator.NIQ8BRW"/>
@@ -5949,13 +5951,15 @@
         <argument key="kernel::loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel::registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel::terminate" type="service" id=".service_locator.beq5mCo"/>
-        <argument key="App\Controller\Admin\MainController:getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
         <argument key="App\Controller\Admin\MainController:index" type="service" id=".service_locator.MrT.xrC"/>
+        <argument key="App\Controller\Admin\MainController:videos" type="service" id=".service_locator.0XdlIh3"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController:categories" type="service" id=".service_locator.jT4SQLC"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController:deleteCategory" type="service" id=".service_locator.wNIwF8O"/>
         <argument key="App\Controller\Admin\Superadmin\CategoryController:editCategory" type="service" id=".service_locator.wNIwF8O"/>
+        <argument key="App\Controller\Admin\Superadmin\CategoryController:getAllCategories" type="service" id=".service_locator.0XdlIh3"/>
         <argument key="App\Controller\Admin\Superadmin\SuperAdminController:deleteUser" type="service" id=".service_locator.hEwcf7A"/>
         <argument key="App\Controller\Admin\Superadmin\SuperAdminController:deleteVideo" type="service" id=".service_locator.kSX4LBZ"/>
+        <argument key="App\Controller\Admin\Superadmin\SuperAdminController:updateVideoCategory" type="service" id=".service_locator.TZbBIQs"/>
         <argument key="App\Controller\Admin\Superadmin\SuperAdminController:uploadVideoLocally" type="service" id=".service_locator.iX6QLvK"/>
         <argument key="App\Controller\FrontController:newComment" type="service" id=".service_locator.TZbBIQs"/>
         <argument key="App\Controller\FrontController:searchResults" type="service" id=".service_locator.NIQ8BRW"/>
@@ -6462,12 +6466,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.OsMYN._"/>
+      <argument type="service" id=".service_locator.COVooun"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.OsMYN._"/>
+      <argument type="service" id=".service_locator.COVooun"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6884,7 +6888,7 @@
     <service id="Knp\Bundle\TimeBundle\DateTimeFormatter" alias="time.datetime_formatter"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.OsMYN._"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.COVooun"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

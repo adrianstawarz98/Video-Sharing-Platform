@@ -51,20 +51,23 @@ class MainController extends AbstractController
     /**
      * @Route("/videos", name="videos")
      */
-    public function videos()
+    public function videos(CategoryTreeAdminOptionList $categories)
     {
 
         if ($this->isGranted('ROLE_ADMIN'))
         {
-            $videos = $this->getDoctrine()->getRepository(Video::class)->findAll();
+            $categories->getCategoryList($categories->buildTree());
+            $videos = $this->getDoctrine()->getRepository(Video::class)->findBy([],["title"=>"ASC"]);
         }
         else
         {
+            $categories = null;
             $videos = $this->getUser()->getLikedVideos();
         }
 
         return $this->render('admin/videos.html.twig',[
-            'videos'=>$videos
+            'videos'=>$videos,
+            'categories' => $categories
         ]);
     }
     /**
@@ -87,13 +90,6 @@ class MainController extends AbstractController
 
 
 
-    public function getAllCategories(CategoryTreeAdminOptionList $categories, $editedCategory = null)
-    {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
-        $categories->getCategoryList($categories->buildTree());
-        return $this->render('admin/_all_categories.html.twig',['categories'=>$categories,'editedCategory'=>$editedCategory]);
-    }
 
     /**
      * @Route("/delete-account", name="delete_account")

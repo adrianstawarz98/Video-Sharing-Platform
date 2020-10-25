@@ -77,9 +77,15 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $helper)
     {
-        return $this->render('front/login.html.twig', [
-            'error' => $helper->getLastAuthenticationError()
-        ]);
+        if($this->isGranted('IS_AUTHENTICATED_REMEMBERED'))
+        {
+           return $this->redirectToRoute('admin_main_page');
+        }else{
+            return $this->render('front/login.html.twig', [
+                'error' => $helper->getLastAuthenticationError()
+            ]);
+
+        }
     }
 
     /**
