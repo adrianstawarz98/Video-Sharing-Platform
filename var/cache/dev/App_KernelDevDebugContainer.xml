@@ -134,7 +134,7 @@
       <parameter key="cookie_samesite">lax</parameter>
       <parameter key="gc_probability">1</parameter>
     </parameter>
-    <parameter key="session.save_path">E:\Video-Sharing-Platform\var\cache\dev/sessions</parameter>
+    <parameter key="session.save_path">E:\Video-Sharing-Platform/var/sessions/dev</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="form.type_extension.csrf.enabled">true</parameter>
     <parameter key="form.type_extension.csrf.field_name">_token</parameter>
@@ -477,6 +477,9 @@
       <argument>E:\Video-Sharing-Platform/public/uploads/videos</argument>
     </service>
     <service id="App\Utils\VideoForNoValidSubscription" class="App\Utils\VideoForNoValidSubscription" autowire="true" autoconfigure="true">
+      <argument type="service" id="security.helper"/>
+    </service>
+    <service id="App\Utils\VimeoUploader" class="App\Utils\VimeoUploader" autowire="true" autoconfigure="true">
       <argument type="service" id="security.helper"/>
     </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory" public="false"/>
@@ -1198,7 +1201,7 @@
       <argument>false</argument>
     </service>
     <service id=".1_NativeFileSessionHandler~5ZtOyFg" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler" public="false">
-      <argument>E:\Video-Sharing-Platform\var\cache\dev/sessions</argument>
+      <argument>E:\Video-Sharing-Platform/var/sessions/dev</argument>
     </service>
     <service id="session" class="Symfony\Component\HttpFoundation\Session\Session" public="true">
       <argument type="service" id="session.storage.native"/>
@@ -1215,11 +1218,11 @@
     </service>
     <service id="session.storage.native" class="Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage" public="false">
       <argument>%session.storage.options%</argument>
-      <argument>null</argument>
+      <argument type="service" id="session.handler.native_file"/>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
     <service id="session.storage.php_bridge" class="Symfony\Component\HttpFoundation\Session\Storage\PhpBridgeSessionStorage" public="false">
-      <argument>null</argument>
+      <argument type="service" id="session.handler.native_file"/>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
     <service id="session.flash_bag" class="Symfony\Component\HttpFoundation\Session\Flash\FlashBag" public="false">
@@ -3866,12 +3869,13 @@
     <service id="doctrine.dbal.default_connection" class="Doctrine\DBAL\Connection" public="true">
       <argument type="collection">
         <argument key="url">%env(resolve:DATABASE_URL)%</argument>
+        <argument key="driver">pdo_sqlite</argument>
         <argument key="host">localhost</argument>
         <argument key="port">null</argument>
         <argument key="user">root</argument>
         <argument key="password">null</argument>
-        <argument key="driver">pdo_mysql</argument>
         <argument key="driverOptions" type="collection"/>
+        <argument key="serverVersion" type="string">3.15</argument>
         <argument key="defaultTableOptions" type="collection"/>
       </argument>
       <argument type="service" id="doctrine.dbal.default_connection.configuration"/>
@@ -6754,7 +6758,7 @@
     <service id="Symfony\Component\DependencyInjection\ContainerInterface" alias="service_container" public="false">
       <deprecated package="symfony/dependency-injection" version="5.1">The "%alias_id%" autowiring alias is deprecated. Define it explicitly in your app if you want to keep using it.</deprecated>
     </service>
-    <service id="App\Utils\Interfaces\UploadInterface" alias="App\Utils\LocalUploader" public="false"/>
+    <service id="App\Utils\Interfaces\UploadInterface" alias="App\Utils\LocalUploader"/>
     <service id="App\Kernel" alias="kernel" public="true"/>
     <service id="Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface" alias="parameter_bag" public="false"/>
     <service id="Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface" alias="parameter_bag" public="false"/>

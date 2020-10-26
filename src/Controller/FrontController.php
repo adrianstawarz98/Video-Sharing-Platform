@@ -28,12 +28,13 @@ class FrontController extends AbstractController
     }
 
     /**
-     * @Route("/video-list/category/{categoryname},{id}/{page}", defaults={"page": "1"}, name="video_list")
+     * @Route("/video-list/category/{categoryname}/{id}/{page}", defaults={"page": "1"}, name="video_list")
      */
     public function videoList($id, $page, CategoryTreeFrontPage $categories, Request $request, VideoForNoValidSubscription $video_no_members )
     {
+
         $ids = $categories->getChildIds($id);
-        array_push($ids, $id);
+        $ids[] = $id;
 
         $videos = $this->getDoctrine()
         ->getRepository(Video::class)

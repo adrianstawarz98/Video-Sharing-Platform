@@ -7,5 +7,11 @@
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mariadb://localhost:3306/symf4vsp</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="data" uuid="eda44ad3-9ed1-4cd2-9229-6da43b6809d5">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:E:\Video-Sharing-Platform\var\data.db</jdbc-url>
+    </data-source>
   </component>
 </project>

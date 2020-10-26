@@ -53,22 +53,22 @@ return [
                 .')'
                 .'|/video\\-(?'
                     .'|list/(?'
-                        .'|category/([^/,]++),([^/]++)(?:/([^/]++))?(*:399)'
+                        .'|category/([^/]++)/([^/]++)(?:/([^/]++))?(*:398)'
                         .'|([^/]++)/(?'
-                            .'|like(*:423)'
-                            .'|dislike(*:438)'
+                            .'|like(*:422)'
+                            .'|dislike(*:437)'
                             .'|un(?'
-                                .'|like(*:455)'
-                                .'|dodislike(*:472)'
+                                .'|like(*:454)'
+                                .'|dodislike(*:471)'
                             .')'
                         .')'
                     .')'
-                    .'|details/([^/]++)(*:499)'
+                    .'|details/([^/]++)(*:498)'
                 .')'
-                .'|/new\\-comment/([^/]++)(*:530)'
-                .'|/search\\-results(?:/([^/]++))?(*:568)'
-                .'|/register/([^/]++)(*:594)'
-                .'|/payment(?:/([^/]++))?(*:624)'
+                .'|/new\\-comment/([^/]++)(*:529)'
+                .'|/search\\-results(?:/([^/]++))?(*:567)'
+                .'|/register/([^/]++)(*:593)'
+                .'|/payment(?:/([^/]++))?(*:623)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -84,16 +84,16 @@ return [
         268 => [[['_route' => 'delete_video', '_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::deleteVideo'], ['video', 'path'], null, null, false, true, null]],
         289 => [[['_route' => 'delete_user', '_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::deleteUser'], ['user'], null, null, false, true, null]],
         330 => [[['_route' => 'update_video_category', '_controller' => 'App\\Controller\\Admin\\Superadmin\\SuperAdminController::updateVideoCategory'], ['video'], ['POST' => 0], null, false, true, null]],
-        399 => [[['_route' => 'video_list', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::videoList'], ['categoryname', 'id', 'page'], null, null, false, true, null]],
-        423 => [[['_route' => 'like_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
-        438 => [[['_route' => 'dislike_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
-        455 => [[['_route' => 'undo_like_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
-        472 => [[['_route' => 'undo_dislike_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
-        499 => [[['_route' => 'video_details', '_controller' => 'App\\Controller\\FrontController::videoDetails'], ['video'], null, null, false, true, null]],
-        530 => [[['_route' => 'new_comment', '_controller' => 'App\\Controller\\FrontController::newComment'], ['video'], ['POST' => 0], null, false, true, null]],
-        568 => [[['_route' => 'search_results', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::searchResults'], ['page'], ['GET' => 0], null, false, true, null]],
-        594 => [[['_route' => 'register', '_controller' => 'App\\Controller\\SecurityController::register'], ['plan'], null, null, false, true, null]],
-        624 => [
+        398 => [[['_route' => 'video_list', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::videoList'], ['categoryname', 'id', 'page'], null, null, false, true, null]],
+        422 => [[['_route' => 'like_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
+        437 => [[['_route' => 'dislike_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
+        454 => [[['_route' => 'undo_like_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
+        471 => [[['_route' => 'undo_dislike_video', '_controller' => 'App\\Controller\\FrontController::toggleLikesAjax'], ['video'], ['POST' => 0], null, false, false, null]],
+        498 => [[['_route' => 'video_details', '_controller' => 'App\\Controller\\FrontController::videoDetails'], ['video'], null, null, false, true, null]],
+        529 => [[['_route' => 'new_comment', '_controller' => 'App\\Controller\\FrontController::newComment'], ['video'], ['POST' => 0], null, false, true, null]],
+        567 => [[['_route' => 'search_results', 'page' => '1', '_controller' => 'App\\Controller\\FrontController::searchResults'], ['page'], ['GET' => 0], null, false, true, null]],
+        593 => [[['_route' => 'register', '_controller' => 'App\\Controller\\SecurityController::register'], ['plan'], null, null, false, true, null]],
+        623 => [
             [['_route' => 'payment', 'paypal' => false, '_controller' => 'App\\Controller\\SubscriptionController::payment'], ['paypal'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
